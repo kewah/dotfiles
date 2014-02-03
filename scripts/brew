@@ -1,0 +1,103 @@
+#!/bin/bash
+
+brew_tap() {
+  if ! brew tap | grep "${@}" > /dev/null; then
+    brew tap "${@}"
+  fi
+}
+
+brew_install() {
+  if ! $(brew list ${@} >/dev/null); then
+    brew install ${@}
+  fi
+}
+
+# Borrowed from https://github.com/MoOx/dotfiles/blob/master/bin/apps
+cask_install() {
+  if [ ! -d "$1" ] && [ ! -d "/Applications/$1/" ] && [ ! -d "/Applications/$1.app/" ] && [ ! -d "$HOME/Applications/$1.app/" ] && [ ! -d "$HOME/Applications/$1/" ]
+  then
+    brew cask install $2 --appdir="/Applications"
+  fi
+}
+
+brew_run() {
+  brew update
+  brew upgrade
+
+  echo "Homebrew:"
+  echo "Installing packages..."
+
+  local -a PACKAGES_NAME=(
+    "git"
+    "ghi"
+    "git-extras"
+    "zsh"
+    "zsh-completions"
+    "node"
+    "macvim --override-system-vim"
+    "ack"
+    "the_silver_searcher"
+    "ctags"
+    "tmux"
+    "tree"
+    "pngquant"
+    "trash"
+    "fontforge"
+  )
+
+  for index in ${!PACKAGES_NAME[*]}; do
+    brew_install ${PACKAGES_NAME[$index]}
+  done
+
+  echo "Installing apps..."
+
+  # brew cask
+  brew_tap phinze/cask
+  brew_install brew-cask
+  brew_tap caskroom/versions
+
+  local -a APPS_NAME=(
+    "Google Chrome"
+    "Google Chrome Canary"
+    "Google Drive"
+    "GoogleAppEngineLauncher"
+    "Firefox"
+    "Opera"
+    "Cloudup"
+    "Dropbox"
+    "AppZapper"
+    "Fluid"
+    "ImageOptim"
+    "iStat Menus"
+    "LimeChat"
+    "Mamp"
+    "Mou"
+    "Skype"
+    "Slowy"
+    "Subtitles"
+    "Spectacle"
+    "Spotify"
+    "Tower"
+    "Transmission"
+    "Versions"
+    "VirtualBox"
+    "VLC"
+    "XtraFinder"
+
+    "qlcolorcode"
+    "qlstephen"
+    "qlmarkdown"
+    "quicklook-json"
+    "webp-quicklook"
+  )
+
+  for index in ${!APPS_NAME[*]}; do
+    app=$(echo ${APPS_NAME[$index]} | tr "A-Z" "a-z" | tr " " "-")
+    cask_install "${APPS_NAME[$index]}" "$app"
+  done
+
+  # names that does not follow the same pattern
+  cask_install "Sublime Text 2" "sublime-text"
+  cask_install "Alfred 2" "alfred"
+  cask_install "iTerm 2" "iterm"
+}

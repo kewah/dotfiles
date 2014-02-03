@@ -1,0 +1,12 @@
+{
+  "preset": "default",
+
+  "lineBreak": {
+    "keepEmptyLines": 2
+  },
+
+  "whiteSpace": {
+    "value": " ",
+    "removeTrailing": 1
+  }
+}

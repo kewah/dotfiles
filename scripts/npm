@@ -1,0 +1,22 @@
+#!/bin/bash
+
+npm_run() {
+  echo "NPM:"
+  echo "Installing packages..."
+
+  local packages="\
+    autoprefixer \
+    browserify \
+    component \
+    esformatter \
+    grunt-cli \
+    gulp \
+    instant-markdown-d \
+    jshint \
+    nodemon \
+    simple-server \
+    tldr \
+    yo"
+
+  npm i $packages -g --quiet
+}

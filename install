@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Inspired by https://github.com/necolas/dotfiles/blob/master/bin/dotfiles
+DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+DOTFILES_TARBALL_PATH="https://github.com/kewah/dotfiles/tarball/master"
+DOTFILES_GIT_REMOTE="git@github.com:kewah/dotfiles.git"
+
+# If missing, download and extract the dotfiles repository
+if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+  printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
+  mkdir ${DOTFILES_DIRECTORY}
+  # Get the tarball
+  curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
+  # Extract to the dotfiles directory
+  tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
+  # Remove the tarball
+  rm -rf ${HOME}/dotfiles.tar.gz
+fi
+
+cd ${DOTFILES_DIRECTORY}
+
+source ./scripts/osx
+source ./scripts/brew
+source ./scripts/npm
+source ./scripts/gem
+
+type_exists() {
+  if [ $(type -P $1) ]; then
+    return 0
+  fi
+  return 1
+}
+
+is_git_repo() {
+  $(git rev-parse --is-inside-work-tree &> /dev/null)
+}
+
+link() {
+  # Force create/replace the symlink.
+  ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+}
+
+# Before relying on Homebrew, check that packages can be compiled
+if ! type_exists "gcc"; then
+  echo "The XCode Command Line Tools must be installed first."
+  echo "  Download them from: https://developer.apple.com/downloads"
+  open https://developer.apple.com/downloads
+  exit 1
+fi
+
+# Check for Homebrew
+if ! type_exists "brew"; then
+  echo "Installing Homebrew..."
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+# Check for git
+if ! type_exists "git"; then
+  echo "Updating Homebrew..."
+  brew update
+  echo "Installing Git..."
+  brew install git
+fi
+
+# Initialize the git repository if it's missing
+if ! is_git_repo; then
+  echo "Initializing git repository..."
+  git init
+  git remote add origin ${DOTFILES_GIT_REMOTE}
+  git fetch origin master
+  git reset --hard FETCH_HEAD
+fi
+
+sudo chown -R $USER /usr/local
+
+brew_run
+npm_run
+gem_run
+
+# Force remove the vim directory if it's already there.
+if [ -e "${HOME}/.vim" ]; then
+  rm -rf "${HOME}/.vim"
+fi
+
+link "dotfiles/aliases" ".aliases"
+link "dotfiles/esformatter" ".esformatter"
+link "dotfiles/gitconfig" ".gitconfig"
+link "dotfiles/gitignore" ".gitignore"
+link "dotfiles/gvimrc" ".gvimrc"
+link "dotfiles/inputrc" ".inputrc"
+link "dotfiles/jshintrc" ".jshintrc"
+link "dotfiles/vimrc" ".vimrc"
+link "vim" ".vim"
+link "dotfiles/zshrc" ".zshrc"
+
+ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/pure/pure.zsh" /usr/local/share/zsh/site-functions/prompt_pure_setup
+ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" /usr/local/share/zsh-syntax-highlighting
+
+chsh -s $(which zsh)

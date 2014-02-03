@@ -1,0 +1,380 @@
+set nocompatible
+
+" change the mapleader from / to ,
+let mapleader=","
+
+execute pathogen#infect()
+execute pathogen#helptags()
+filetype plugin indent on
+syntax on
+
+" Set syntax highlighting options.
+set t_Co=256
+set background=dark
+colorscheme Tomorrow-Night
+
+set autoindent
+set autoread " reload files when changed on disk, i.e. via `git checkout`
+set paste
+set clipboard=unnamed " yank and paste with the system clipboard
+set copyindent
+set backspace=indent,eol,start
+set cursorline " Highlight current line
+set nu " Enable line numbers
+set relativenumber
+set encoding=utf-8 nobomb " BOM often causes trouble
+set history=1000 " Increase history from 20 default to 1000
+set gdefault " assume the /g flag on :s substitutions
+set hlsearch " Highlight searches
+set hidden
+set ignorecase " Ignore case of searches.
+set smartcase " Ignore case if search pattern is all lowercase
+set incsearch " Highlight dynamically as pattern is typed.
+set linespace=3 " Line height
+set mousehide " Hide mouse when typing
+set noerrorbells " don't beep
+set visualbell " don't beep
+set nostartofline
+set numberwidth=4
+set scrolloff=2 " Start scrolling three lines before horizontal border of window.
+set smartindent " use smart indent if there is no indent file
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set spelllang=en_gb
+set expandtab " Expand TABs to spaces
+set title " change the terminal's title
+
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+set nobackup
+set noswapfile
+
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+
+" Don't add the comment prefix when I hit enter or o/O on a comment line.
+set formatoptions-=or
+
+" set list " Show 'invisible' characters
+set listchars=tab:▸\ ,trail:·,nbsp:_ " Set characters used to indicate 'invisible' characters
+set showbreak=⌞
+set wrap
+set linebreak
+set nolist
+
+" folding settings
+set foldmethod=manual
+set foldnestmax=10 " deepest fold is 10 levels
+set nofoldenable " don't fold by default
+set foldlevel=1
+
+" Wild settings
+set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
+set wildmenu
+set wildmode=full " autocomplete menu like ZSH
+
+set wildignore="" " reset
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem " Disable output and VCS files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz " Disable archive files
+set wildignore+=*/.sass-cache/* " Ignore sass cache
+set wildignore+=*/.settings/* " Ignore settings folders
+set wildignore+=*.pyc " Python byte code
+set wildignore+=*.swp,*~,._* " Ignore temp and backup files
+set wildignore+=*.png,*.jpg,*.jpeg,*.gif,*.psd,*.tiff,*.swf,*.fla " Ignore image files
+set wildignore+=*.DS_Store " Ignore .DS_Store files
+set wildignore+=*.ogg,*.mp3,*.aac " Ignore sound files
+
+set laststatus=2 " Always show status line
+set statusline=[%<%f] " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=\ %y " Type
+set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+
+highlight ColorColumn ctermbg=magenta guibg=magenta
+
+autocmd BufNewFile,BufRead *.md set ft=markdown
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd FileType markdown setlocal spell
+
+" Strip trailing whitespace automatically when the file is saved
+autocmd BufWritePre *.js :call StripWhitespace()
+
+
+"-----------------------------------------------------------"
+" KEY MAPPING
+"-----------------------------------------------------------"
+
+" Edit and reload my vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" No more help key.
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+nnoremap ; :
+nnoremap \ ;
+vnoremap \ ;
+
+" Buffer
+nnoremap <leader>q :bp\|bd #<CR> " Delete the current buffer
+nnoremap <S-left> :bp<CR> " Go to previous buffer
+nnoremap <S-right> :bn<CR> " Go to next buffer
+
+" Indent
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Remap j and k to act as expected when used on long, wrapped, lines
+nnoremap j gj
+nnoremap k gk
+
+" Center search matches
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
+" yanked stack (also, in visual mode)
+nmap <silent> <leader>d "_d
+vmap <silent> <leader>d "_d
+
+" Yank/paste to the OS clipboard with ,y and ,p
+nmap <leader>y "+y
+nmap <leader>Y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+
+" Quick yanking to the end of the line
+nmap Y y$
+
+" vaa select the entire file
+vmap aa VGo1G
+
+" Select just-pasted text
+nnoremap gp `[v`]
+
+" add a blank line below or above and keep the cursor in place
+nmap <S-Return> O<Esc>j
+nmap <CR> o<Esc>k
+
+" Insert a new link before/after (like ST)
+imap <D-Return> <C-o>o
+imap <S-Return> <C-o>O
+
+" Speed up viewport scrolling
+nnoremap <C-e> 4<C-e>
+nnoremap <C-y> 4<C-y>
+
+" Search
+nnoremap <silent> <leader><space> :noh<cr>
+
+" Fold inner curly braces
+nmap <Space>f zfiB
+
+" Indent inner curly braces
+nmap <Space>i =iB
+
+" Search in the project
+nmap <Space>s :Ag!
+
+" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+
+" change window position
+map <leader>wh <C-w>t<C-w>H
+map <leader>wv <C-w>t<C-w>K
+
+" swtich between tabs
+map <Right> :tabn<CR>
+map <Left> :tabp<CR>
+
+" Auto indent with a new line
+imap <C-Return> <CR><CR><C-o>k<Tab>
+
+" automatically expands to the path of the active buffer
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ow :e %%
+map <leader>os :sp %%
+map <leader>ov :vsp %%
+map <leader>ot :tabe %%
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+  let save_cursor=getpos(".")
+  let old_query=getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+function! JSFormat()
+  " Preparation: save last search, and cursor position.
+  let l:win_view = winsaveview()
+  let l:last_search = getreg('/')
+
+  " call esformatter with the contents form and cleanup the extra newline
+  execute ":%!esformatter"
+  if v:shell_error
+    echoerr 'format script failed'
+    undo
+    return 0
+  endif
+  " Clean up: restore previous search history, and cursor position
+  call winrestview(l:win_view)
+  call setreg('/', l:last_search)
+endfunction
+nnoremap <silent> <leader>es :call JSFormat()<cr>
+vnoremap <silent> <leader>es :! esformatter<CR>
+
+" CSS Format
+function! CssFormat()
+  " one space after a colon
+  :%s/: */: /g
+endfunction
+noremap <leader>cf :call CssFormat()<CR>
+
+" Toggle relatve/abolute line number
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <leader>i :call NumberToggle()<cr>
+
+function! ToggleErrors()
+  if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
+    " No location/quickfix list shown, open syntastic error location panel
+    Errors
+  else
+    lclose
+  endif
+endfunction
+nmap <silent> <F10> :<C-u>call ToggleErrors()<CR>
+
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+nmap <leader>n :call RenameFile()<cr
+
+" Soft wrapping text with :Wrap
+command! -nargs=* Wrap set wrap linebreak nolist
+command! -nargs=* UnWrap set list
+
+"-----------------------------------------------------------"
+" PLUGIN SETTINGS
+"-----------------------------------------------------------"
+
+" Hardmode
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+let g:HardMode = 1
+let g:HardMode_hjklLimit = 2
+
+" Nerdtree
+map <F2> :NERDTreeToggle<CR>  " Give a shortcut key to NERD Tree
+map <leader>nf :NERDTreeFind<cr> " Show the current buffer in NERDTree
+
+let NERDTreeShowHidden = 1
+let NERDTreeShowBookmarks = 1
+let NERDTreeChDirMode = 2 " the CWD is changed whenever the tree root is changed
+let NERDTreeQuitOnOpen = 1 " close nerdtree when we open a file
+let NERDTreeIgnore = [ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '\.swf$', '^\.git$', '\.os$', '\.dylib$', '\.a$', '^\.DS_Store$', '\.pdf', '\.sass-cache$', '\.settings$' ]
+
+" Nerdtree tabs
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_new_tab = 0
+let g:nerdtree_tabs_synchronize_view = 0
+
+" EasyMotion
+let g:EasyMotion_leader_key = '<Leader>'
+
+" ctrlp
+nmap <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_working_path_mode = 'ra' " current working dir
+let g:ctrlp_switch_buffer = 0 " always open files in new buffers
+let g:ctrlp_use_caching = 1
+" let g:ctrlp_clear_cache_on_exit = 0
+" let g:ctrlp_custom_ignore = '\.git$\|\vendor/*|\vendors/*|\.sass-cache/*|dist/*|build/*|node_modules/*|tmp/*|doc/*'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_extensions = ['buffertag', 'line', 'dir']
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" Airline
+let g:airline#extensions#tagbar#enabled = 0
+if has("gui_running")
+  let g:airline_theme = 'powerlineish'
+  let g:airline_powerline_fonts = 1
+  let g:airline_enable_branch = 0
+  let g:airline_enable_hunks = 0
+  let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
+else
+  autocmd VimEnter * AirlineToggle
+endif
+
+" Insert JSDoc
+map <leader>l :JsDoc<CR>
+let g:jsdoc_default_mapping = 0
+
+" Emmet
+imap <C-e> <C-y>,
+let g:use_emmet_complete_tag = 1
+
+" Syntastic
+nmap <silent> <down> :lnext<CR>
+nmap <silent> <up> :lprev<CR>
+let g:syntastic_check_on_open = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_mode_map = { 'passive_filetypes': ['html', 'python'] }
+
+" Goyo (Distraction free)
+nnoremap <silent> <leader>z :Goyo<cr>
+
+" Instant markdown
+let g:instant_markdown_autostart = 0
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" WM
+nmap <silent> <leader>w<Space> :call WMFocusMasterWindow()<CR>
+nmap <silent> <leader>w<CR> :call WMSwapWithMasterWindow()<CR>
+nmap <leader>wm :call WMMarkWindowSwap()<CR>
+nmap <leader>wx :call WMDoWindowSwap()<CR>
+nmap <leader>wt :call WMReStack()<CR>
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif

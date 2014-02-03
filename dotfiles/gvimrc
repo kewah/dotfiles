@@ -1,0 +1,11 @@
+colorscheme twilight
+
+set guifont=Consolas\ for\ Powerline:h13
+set guioptions-=T " remove toolbar
+set guioptions-=l
+set guioptions-=r " remove right-hand scrollbar
+set guioptions-=L " remove left-hand scrollbar
+set gcr=a:blinkon0 " Turn off the blinking cursor in normal mode
+
+" Change the bracket highlight
+hi MatchParen guibg=NONE guifg=yellow gui=bold

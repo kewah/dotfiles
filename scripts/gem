@@ -1,0 +1,26 @@
+#!/bin/bash
+
+gem_install() {
+  if ! type ${@} > /dev/null; then
+    sudo gem install ${@}
+  fi
+}
+
+gem_run() {
+  echo "GEM:"
+  echo "Installing packages..."
+
+  sudo gem update --system && sudo gem update
+
+  local -a PACKAGES_NAME=(
+    "compass"
+    "git-up"
+    "galileo"
+    "jekyll"
+    "tmuxinator"
+  )
+
+  for index in ${!PACKAGES_NAME[*]}; do
+    gem_install ${PACKAGES_NAME[$index]}
+  done
+}
