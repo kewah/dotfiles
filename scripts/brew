@@ -80,6 +80,7 @@ brew_run() {
     "Spotify"
     "Tower"
     "Transmission"
+    "Transmit"
     "Versions"
     "VirtualBox"
     "VLC"
