@@ -68,6 +68,8 @@ fi
 #   git remote add origin ${DOTFILES_GIT_REMOTE}
 #   git fetch origin master
 #   git reset --hard FETCH_HEAD
+#   git submodule sync
+#   git submodule update --init --recursive
 # fi
 
 sudo chown -R $USER /usr/local
