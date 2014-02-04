@@ -66,6 +66,7 @@ brew_run() {
     "Cloudup"
     "Dropbox"
     "AppZapper"
+    "dash"
     "Fluid"
     "ImageOptim"
     "iStat Menus"
