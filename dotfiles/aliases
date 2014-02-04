@@ -3,6 +3,8 @@ alias ...='../..'
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
 
+alias g="git"
+
 alias copyssh="pbcopy < ~/.ssh/id_rsa.pub"
 alias limitopen='sudo ulimit -n 10480'
 alias dl="cd ~/Downloads"
