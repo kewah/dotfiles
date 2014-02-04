@@ -105,4 +105,5 @@ ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/zsh-syntax-highlighting/zsh-syntax-high
 
 chsh -s /bin/zsh
 
-source ./scripts/osx
+source ./settings/osx
+source ./settings/kr4mb-import

@@ -83,6 +83,7 @@ brew_run() {
     "VirtualBox"
     "VLC"
     "XtraFinder"
+    "keyremap4macbook"
 
     "qlcolorcode"
     "qlstephen"
