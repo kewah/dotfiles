@@ -61,6 +61,7 @@ brew_run() {
     "Google Chrome Canary"
     "Google Drive"
     "GoogleAppEngineLauncher"
+    "Google Hangouts"
     "Firefox"
     "Opera"
     "Cloudup"
