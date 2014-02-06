@@ -84,6 +84,7 @@ if [ -e "${HOME}/.vim" ]; then
 fi
 
 link "dotfiles/aliases" ".aliases"
+link "dotfiles/agignore" ".agignore"
 link "dotfiles/esformatter" ".esformatter"
 link "dotfiles/gitconfig" ".gitconfig"
 link "dotfiles/gitignore" ".gitignore"
