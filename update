@@ -1,0 +1,59 @@
+#!/bin/bash
+
+update_brew() {
+  brew update && brew upgrade
+}
+
+update_vim() {
+  cd "${HOME}/.dotfiles"
+  git submodule foreach git pull origin master
+  cd -
+}
+
+update_npm() {
+  npm update -g --silent
+}
+
+update_gem() {
+  sudo gem update --system && gem update
+}
+
+for opt in $@
+do
+  case $opt in
+    --all) all=true ;;
+    --brew) brew=true ;;
+    --vim) vim=true ;;
+    --npm) npm=true ;;
+    --gem) gem=true ;;
+    -*|--*) e_warning "Warning: invalid option $opt" ;;
+  esac
+done
+
+if [[ $all ]]; then
+  echo "Update all packages..."
+  update_brew
+  update_vim
+  update_npm
+  update_gem
+fi
+
+if [[ $brew ]]; then
+  echo "Update Homebrew's packages..."
+  update_brew
+fi
+
+if [[ $vim ]]; then
+  echo "Update Vim's plugins..."
+  update_vim
+fi
+
+if [[ $npm ]]; then
+  echo "Update NPM's packages..."
+  update_npm
+fi
+
+if [[ $gem ]]; then
+  echo "Update Gem's packages..."
+  update_gem
+fi

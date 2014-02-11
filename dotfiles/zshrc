@@ -17,8 +17,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # load our own completion functions
 fpath=(
-  "/usr/local/share/zsh-completions" 
-  "$HOME/.zfunctions" 
+  "/usr/local/share/zsh-completions"
+  "$HOME/.zfunctions"
   $fpath
 )
 
@@ -66,14 +66,12 @@ function vim-add-plugin {
   cd -
 }
 
-function dotfiles-update {
-  cd $HOME/.dotfiles
-  git submodule foreach git pull origin master
-  cd -
-}
-
 function npmls() {
   npm ls --depth=0 "$@" 2>/dev/null
+}
+
+function bigup() {
+  bash "$HOME/.dotfiles/update" $@
 }
 
 
