@@ -15,7 +15,7 @@ update_npm() {
 }
 
 update_gem() {
-  sudo gem update --system && gem update
+  sudo gem update --system && sudo gem update
 }
 
 for opt in $@
