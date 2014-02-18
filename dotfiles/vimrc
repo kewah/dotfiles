@@ -13,6 +13,10 @@ set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 
+" Remove delay between modes
+set timeoutlen=1000
+set ttimeoutlen=10
+
 set autoindent
 set autoread " reload files when changed on disk, i.e. via `git checkout`
 set paste
