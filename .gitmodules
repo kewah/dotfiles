@@ -16,9 +16,6 @@
 [submodule "vim/bundle/vim-node"]
 	path = vim/bundle/vim-node
 	url = https://github.com/moll/vim-node.git
-[submodule "vim/bundle/snipmate.vim"]
-	path = vim/bundle/snipmate.vim
-	url = https://github.com/msanders/snipmate.vim
 [submodule "vim/bundle/auto-pairs"]
 	path = vim/bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
@@ -103,3 +100,15 @@
 [submodule "vim/bundle/vim-mustache-handlebars"]
 	path = vim/bundle/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "vim/bundle/vim-snipmate"]
+	path = vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate
+[submodule "vim/bundle/tlib_vim.git"]
+	path = vim/bundle/tlib_vim.git
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/bundle/vim-addon-mw-utils.git"]
+	path = vim/bundle/vim-addon-mw-utils.git
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
