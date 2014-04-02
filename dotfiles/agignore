@@ -5,6 +5,7 @@ bower_components
 components
 .sass-cache
 build
+vendors
 
 *.png
 *.jpg
