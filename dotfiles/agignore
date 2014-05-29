@@ -6,6 +6,11 @@ components
 .sass-cache
 build
 vendors
+images
+fonts
 
 *.png
 *.jpg
+*.ttf
+*.eot
+*.woff

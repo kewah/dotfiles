@@ -56,3 +56,5 @@
 
 [commit]
   template = ~/.gitmessage
+[help]
+	autocorrect = 1

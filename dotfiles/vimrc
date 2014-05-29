@@ -8,6 +8,8 @@ execute pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+runtime macros/matchit.vim
+
 " Set syntax highlighting options.
 set t_Co=256
 set background=dark
@@ -101,14 +103,14 @@ set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 highlight ColorColumn ctermbg=magenta guibg=magenta
 
 autocmd BufNewFile,BufRead *.md set ft=markdown
-autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.styl set ft=scss
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd FileType markdown setlocal spell
 
 " Strip trailing whitespace automatically when the file is saved
 autocmd BufWritePre *.js :call StripWhitespace()
-
 
 "-----------------------------------------------------------"
 " KEY MAPPING
@@ -132,14 +134,13 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; :
-nnoremap \ ;
-vnoremap \ ;
+noremap ; :
+noremap : ;
+
+imap jk <Esc>
 
 " Buffer
 nnoremap <leader>q :bp\|bd #<CR> " Delete the current buffer
-nnoremap <S-left> :bp<CR> " Go to previous buffer
-nnoremap <S-right> :bn<CR> " Go to next buffer
 
 " Indent
 nnoremap <Tab> >>_
@@ -162,10 +163,14 @@ nmap <silent> <leader>d "_d
 vmap <silent> <leader>d "_d
 
 " Yank/paste to the OS clipboard with ,y and ,p
-nmap <leader>y "+y
-nmap <leader>Y "+yy
-nmap <leader>p "+p
-nmap <leader>P "+P
+" nmap <leader>y "+y
+" nmap <leader>Y "+yy
+" nmap <leader>p "+p
+" nmap <leader>P "+P
+
+" Paste last yank
+nmap <leader> p "0p
+nmap <leader> P "0P
 
 " Quick yanking to the end of the line
 nmap Y y$
@@ -192,13 +197,13 @@ nnoremap <C-y> 4<C-y>
 nnoremap <silent> <leader><space> :noh<cr>
 
 " Fold inner curly braces
-nmap <Space>f zfiB
+nmap <leader>f zfiB
 
 " Indent inner curly braces
-nmap <Space>i =iB
+nmap <leader>i =iB
 
 " Search in the project
-nmap <Space>s :Ag!
+nnoremap <leader>r :Ag!<space>
 
 " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
 map <C-j> <C-W>j
@@ -211,18 +216,18 @@ map <leader>wh <C-w>t<C-w>H
 map <leader>wv <C-w>t<C-w>K
 
 " swtich between tabs
-map <Right> :tabn<CR>
-map <Left> :tabp<CR>
+noremap <Right> :tabn<CR>
+noremap <Left> :tabp<CR>
 
 " Auto indent with a new line
 imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " automatically expands to the path of the active buffer
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ow :e %%
-map <leader>os :sp %%
-map <leader>ov :vsp %%
-map <leader>ot :tabe %%
+noremap <leader>oe :e %%
+noremap <leader>os :sp %%
+noremap <leader>ov :vsp %%
+noremap <leader>ot :tabe %%
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -269,7 +274,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <leader>i :call NumberToggle()<cr>
+nnoremap <leader>b :call NumberToggle()<cr>
 
 function! ToggleErrors()
   if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
@@ -279,7 +284,7 @@ function! ToggleErrors()
     lclose
   endif
 endfunction
-nmap <silent> <F10> :<C-u>call ToggleErrors()<CR>
+nnoremap <silent> <F10> :<C-u>call ToggleErrors()<CR>
 
 function! RenameFile()
   let old_name = expand('%')
@@ -290,7 +295,7 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-nmap <leader>n :call RenameFile()<cr
+nnoremap <leader>n :call RenameFile()<cr
 
 " Soft wrapping text with :Wrap
 command! -nargs=* Wrap set wrap linebreak nolist
@@ -305,9 +310,11 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 let g:HardMode = 1
 let g:HardMode_hjklLimit = 2
 
+let g:vim_json_syntax_conceal = 0
+
 " Nerdtree
-map <F2> :NERDTreeToggle<CR>  " Give a shortcut key to NERD Tree
-map <leader>nf :NERDTreeFind<cr> " Show the current buffer in NERDTree
+noremap <F2> :NERDTreeToggle<CR>  " Give a shortcut key to NERD Tree
+noremap <leader>nf :NERDTreeFind<cr> " Show the current buffer in NERDTree
 
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
@@ -321,10 +328,10 @@ let g:nerdtree_tabs_open_on_new_tab = 0
 let g:nerdtree_tabs_synchronize_view = 0
 
 " EasyMotion
-let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<Space>'
 
 " ctrlp
-nmap <C-b> :CtrlPBuffer<CR>
+nnoremap <C-b> :CtrlPBuffer<CR>
 let g:ctrlp_working_path_mode = 'ra' " current working dir
 let g:ctrlp_switch_buffer = 0 " always open files in new buffers
 let g:ctrlp_use_caching = 1
@@ -346,20 +353,16 @@ else
   autocmd VimEnter * AirlineToggle
 endif
 
-" Insert JSDoc
-map <leader>l :JsDoc<CR>
-let g:jsdoc_default_mapping = 0
-
 " Emmet
 imap <C-e> <C-y>,
 let g:use_emmet_complete_tag = 1
 
 " Syntastic
-nmap <silent> <down> :lnext<CR>
-nmap <silent> <up> :lprev<CR>
+nnoremap <silent> <down> :lnext<CR>
+nnoremap <silent> <up> :lprev<CR>
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
-let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'passive_filetypes': ['html', 'python'] }
 
 " Goyo (Distraction free)
@@ -369,14 +372,23 @@ nnoremap <silent> <leader>z :Goyo<cr>
 let g:instant_markdown_autostart = 0
 
 " Tagbar
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
+
+" JSTern
+let g:tern_map_keys = 1
+nnoremap <leader>td :TernDef<CR>
+nnoremap <leader>tr :TernRefs<CR>
+nnoremap <leader>tR :TernRename<CR>
+
+" sneak
+let g:sneak#s_next = 1
 
 " WM
-nmap <silent> <leader>w<Space> :call WMFocusMasterWindow()<CR>
-nmap <silent> <leader>w<CR> :call WMSwapWithMasterWindow()<CR>
-nmap <leader>wm :call WMMarkWindowSwap()<CR>
-nmap <leader>wx :call WMDoWindowSwap()<CR>
-nmap <leader>wt :call WMReStack()<CR>
+nnoremap <silent> <leader>w<Space> :call WMFocusMasterWindow()<CR>
+nnoremap <silent> <leader>w<CR> :call WMSwapWithMasterWindow()<CR>
+nnoremap <leader>wm :call WMMarkWindowSwap()<CR>
+nnoremap <leader>wx :call WMDoWindowSwap()<CR>
+nnoremap <leader>wt :call WMReStack()<CR>
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

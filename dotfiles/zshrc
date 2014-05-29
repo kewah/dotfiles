@@ -74,6 +74,10 @@ function bigup() {
   bash "$HOME/.dotfiles/update" $@
 }
 
+function gi() {
+  curl http://www.gitignore.io/api/$@
+}
+
 
 # Paths
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
