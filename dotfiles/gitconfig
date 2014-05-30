@@ -52,9 +52,10 @@
   keepTemporaries = false
 
 [include]
-  path = .gitconfig.local
+  path = ~/.gitconfig.local
 
 [commit]
   template = ~/.gitmessage
+
 [help]
   autocorrect = 1
