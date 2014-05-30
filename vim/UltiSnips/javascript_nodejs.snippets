@@ -1,0 +1,22 @@
+priority -50
+
+snippet mod "module.exports" b
+module.exports = $1;
+endsnippet
+
+snippet exp "exports = module.exports" b
+exports = module.exports = ${1};
+endsnippet
+
+snippet /(?<!^)req/ "require" r
+require('${1:path}');
+endsnippet
+
+snippet /^req/ "require" r
+var ${1:name} = require('${2:path}');
+endsnippet
+
+snippet env "env" b
+#!/usr/bin/env node
+${VISUAL}$0
+endsnippet

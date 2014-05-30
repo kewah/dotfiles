@@ -1,0 +1,222 @@
+###########
+#  UTILS  #
+###########
+
+snippet cons "console.log"
+console.log(${VISUAL}$0);
+endsnippet
+
+snippet self "self = this" b
+var self = this;
+endsnippet
+
+snippet strict "use strict" b
+'use strict';
+${VISUAL}$0
+endsnippet
+
+
+###########
+#  LOOPS  #
+###########
+
+snippet fori "for increment" b
+var ${1:len} = ${2:array}.length;
+var ${3:i}, ${4:item};
+
+for ($3 = 0; $3 < $1; $3++) {
+  $4 = $2[$3];
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet ford "for decrement" b
+var ${1:i}, ${2:item};
+
+for ($1 = ${3:array}.length - 1; $1 >= 0; $1--) {
+  $2 = $3[$1];
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet whiled "while decrement" b
+var ${1:i} = ${2:array}.length;
+var ${3:item};
+
+while ($1--) {
+  $3 = $2[$1];
+  ${VISUAL}$0
+}
+endsnippet
+
+################
+#  CONDITIONS  #
+################
+
+snippet if "if" b
+if (${1}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet ifi "if inline" b
+if (${1}) return ${VISUAL}$0;
+endsnippet
+
+snippet /(?<!^)ift/ "if ternary" r
+${2:condition}
+  ? ${3:true}
+  : ${4:false};
+endsnippet
+
+snippet /^ift/ "if ternary with var" r
+var ${1:variable} = ${2:condition}
+  ? ${3:true}
+  : ${4:false};
+endsnippet
+
+#########
+#  DOM  #
+#########
+
+snippet get "Get Elements"
+getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
+endsnippet
+
+snippet /(?<!^)ael/ "addEventListener" r
+addEventListener('${1:type}', ${VISUAL}$0${2:, false});
+endsnippet
+
+snippet /^ael/ "addEventListener" r
+${1:document}.addEventListener('${2:type}', ${VISUAL}$0${3:, false});
+endsnippet
+
+snippet /(?<!^)rel/ "removeEventListener" r
+removeEventListener('${1:type}', ${VISUAL}$0${2:, false});
+endsnippet
+
+snippet /^rel/ "removeEventListener" r
+${1:document}.removeEventListener('${2:type}', ${VISUAL}$0${3:, false});
+endsnippet
+
+snippet /(?<!^)query/ "querySelector" r
+querySelector('${VISUAL}$0');
+endsnippet
+
+snippet /^query/ "querySelector" r
+${1:document}.querySelector('${VISUAL}$0');
+endsnippet
+
+snippet /(?<!^)querya/ "querySelectorAll" r
+querySelectorAll('${VISUAL}$0');
+endsnippet
+
+snippet /^querya/ "querySelectorAll" r
+${1:document}.querySelectorAll('${VISUAL}$0');
+endsnippet
+
+snippet prevent "preventDefault" b
+e.preventDefault();
+${VISUAL}$0
+endsnippet
+
+snippet propa "stopPropagation" b
+e.stopPropagation();
+${VISUAL}$0
+endsnippet
+
+###############
+#  FUNCTIONS  #
+###############
+
+snippet /(?<!^)fn/ " anoymous function" r
+function($1) {
+  ${VISUAL}$0
+}$2
+endsnippet
+
+snippet /^fn/ "function" r
+function ${1:name}(${2}) {
+  ${VISUAL}$0
+}
+endsnippet
+
+snippet f: "Object function" b
+${1:name}: function($2) {
+  ${VISUAL}$0
+}${3:,}
+endsnippet
+
+snippet fv "var function" b
+var ${1:name} = function($2) {
+  ${VISUAL}$0
+};
+endsnippet
+
+snippet iife "Immediately-Invoked Function Expression (iife)" b
+(function(${1:argument}) {
+  ${VISUAL}$0
+}(${2:$1}));
+endsnippet
+
+snippet sett "setTimeout function"
+setTimeout(function() {
+  ${VISUAL}$0
+}${2:.bind(${3:this})}, ${1:10});
+endsnippet
+
+snippet /(?<!^)bind/ "bind(this)" r
+this.${1:handler}.bind(this);
+endsnippet
+
+snippet /^bind/ "bind(this)" r
+this.${1:handler} = this.$1.bind(this);
+endsnippet
+
+snippet autonew "Return an instance" b
+if (!(this instanceof ${1:ClassName})) {
+  return new $1($2);
+}
+endsnippet
+
+snippet prot "protype" b
+${1:class}.prototype.${2:method} = function(${3:arguments}) {
+  ${VISUAL}$0
+};
+endsnippet
+
+############
+#  OBJECT  #
+############
+
+snippet _slice "Array.prototype.slice" b
+var _slice = Array.prototype.slice;
+endsnippet
+
+snippet _has "Object.prototype.hasOwnProperty" b
+var _has = Object.prototype.hasOwnProperty;
+endsnippet
+
+snippet typeb "typeof boolean" w
+typeof ${0:var} === 'boolean'
+endsnippet
+
+snippet typen "typeof number" w
+typeof ${0:var} === 'number'
+endsnippet
+
+snippet typef "typeof function" w
+typeof ${0:var} === 'function'
+endsnippet
+
+snippet typeo "typeof object" w
+typeof ${0:var} === 'object'
+endsnippet
+
+snippet types "typeof string" w
+typeof ${0:var} === 'string'
+endsnippet
+
+snippet typeu "typeof undefined" w
+typeof ${0:var} === 'undefined'
+endsnippet

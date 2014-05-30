@@ -383,6 +383,14 @@ nnoremap <leader>wm :call WMMarkWindowSwap()<CR>
 nnoremap <leader>wx :call WMDoWindowSwap()<CR>
 nnoremap <leader>wt :call WMReStack()<CR>
 
+" Ultisnips
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+
+" Supertab
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
