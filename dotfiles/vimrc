@@ -100,11 +100,7 @@ set statusline+=%w%h%m%r " Options
 set statusline+=\ %y " Type
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 
-highlight ColorColumn ctermbg=magenta guibg=magenta
-
 autocmd BufNewFile,BufRead *.md set ft=markdown
-" autocmd BufNewFile,BufRead *.json set ft=javascript
-" autocmd BufNewFile,BufRead *.styl set ft=scss
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd FileType markdown setlocal spell
@@ -367,9 +363,6 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html', 'python'] }
 
 " Goyo (Distraction free)
 nnoremap <silent> <leader>z :Goyo<cr>
-
-" Instant markdown
-let g:instant_markdown_autostart = 0
 
 " Tagbar
 nnoremap <F8> :TagbarToggle<CR>
