@@ -385,11 +385,9 @@ nnoremap <leader>wt :call WMReStack()<CR>
 
 " Ultisnips
 let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-
-" Supertab
-" let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
