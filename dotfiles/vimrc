@@ -389,6 +389,11 @@ let g:UltiSnipsExpandTrigger="<c-s>"
 let g:UltiSnipsJumpForwardTrigger = "<c-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
+" Vim session
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local

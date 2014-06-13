@@ -2,6 +2,10 @@
 #  UTILS  #
 ###########
 
+snippet c "console.log"
+console.log(${VISUAL}$0);
+endsnippet
+
 snippet cons "console.log"
 console.log(${VISUAL}$0);
 endsnippet
@@ -100,19 +104,11 @@ ${1:document}.removeEventListener('${2:type}', ${VISUAL}$0${3:, false});
 endsnippet
 
 snippet /(?<!^)query/ "querySelector" r
-querySelector('${VISUAL}$0');
-endsnippet
-
-snippet /^query/ "querySelector" r
-${1:document}.querySelector('${VISUAL}$0');
+${1:document.}querySelector('${VISUAL}$0')
 endsnippet
 
 snippet /(?<!^)querya/ "querySelectorAll" r
-querySelectorAll('${VISUAL}$0');
-endsnippet
-
-snippet /^querya/ "querySelectorAll" r
-${1:document}.querySelectorAll('${VISUAL}$0');
+${1:document.}querySelectorAll('${VISUAL}$0')
 endsnippet
 
 snippet prevent "preventDefault" b
@@ -162,7 +158,7 @@ endsnippet
 snippet sett "setTimeout function"
 setTimeout(function() {
   ${VISUAL}$0
-}${2:.bind(${3:this})}, ${1:10});
+}, ${1:10});
 endsnippet
 
 snippet /(?<!^)bind/ "bind(this)" r
@@ -174,9 +170,8 @@ this.${1:handler} = this.$1.bind(this);
 endsnippet
 
 snippet autonew "Return an instance" b
-if (!(this instanceof ${1:ClassName})) {
-  return new $1($2);
-}
+if (!(this instanceof ${1:ClassName})) return new $1($2);
+
 endsnippet
 
 snippet prot "protype" b
