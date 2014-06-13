@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change shift right to equal</name>
+    <identifier>private.shift_right_to_equal</identifier>
+    <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::EQUAL</autogen>
+  </item>
+</root>
