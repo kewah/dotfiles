@@ -29,7 +29,6 @@ set cursorline " Highlight current line
 set nu " Enable line numbers
 set relativenumber
 set encoding=utf-8 nobomb " BOM often causes trouble
-set history=1000 " Increase history from 20 default to 1000
 set gdefault " assume the /g flag on :s substitutions
 set hlsearch " Highlight searches
 set hidden
@@ -42,14 +41,17 @@ set noerrorbells " don't beep
 set visualbell " don't beep
 set nostartofline
 set numberwidth=4
+
+set shiftwidth=2
+set spelllang=en_gb
+set title " change the terminal's title
+
+" Indent settings
 set scrolloff=2 " Start scrolling three lines before horizontal border of window.
 set smartindent " use smart indent if there is no indent file
 set softtabstop=2
 set tabstop=2
-set shiftwidth=2
-set spelllang=en_gb
 set expandtab " Expand TABs to spaces
-set title " change the terminal's title
 
 " Open new split panes to right and bottom
 set splitbelow
@@ -58,8 +60,10 @@ set splitright
 set nobackup
 set noswapfile
 
+" Undo settings
+set history=1000
 set undofile
-set undodir=$HOME/.vim/undo
+set undodir=~/.vim/undo
 set undolevels=1000
 
 " Don't add the comment prefix when I hit enter or o/O on a comment line.
@@ -72,7 +76,7 @@ set wrap
 set linebreak
 set nolist
 
-" folding settings
+" Folding settings
 set foldmethod=manual
 set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
@@ -236,7 +240,7 @@ noremap <leader>os :sp %%
 noremap <leader>ov :vsp %%
 noremap <leader>ot :tabe %%
 
-" Strip trailing whitespace (,ss)
+" Strip trailing whitespace
 function! StripWhitespace()
   let save_cursor=getpos(".")
   let old_query=getreg('/')
@@ -264,13 +268,6 @@ function! JSFormat()
 endfunction
 nnoremap <silent> <leader>es :call JSFormat()<cr>
 vnoremap <silent> <leader>es :! esformatter<CR>
-
-" CSS Format
-function! CssFormat()
-  " one space after a colon
-  :%s/: */: /g
-endfunction
-noremap <leader>cf :call CssFormat()<CR>
 
 " Toggle relatve/abolute line number
 function! NumberToggle()
@@ -320,7 +317,7 @@ let g:HardMode_hjklLimit = 2
 let g:vim_json_syntax_conceal = 0
 
 " Nerdtree
-noremap <F2> :NERDTreeToggle<CR>  " Give a shortcut key to NERD Tree
+noremap <F2> :NERDTreeToggle<CR>
 noremap <leader>nf :NERDTreeFind<cr> " Show the current buffer in NERDTree
 
 let NERDTreeShowHidden = 1
@@ -339,11 +336,10 @@ let g:EasyMotion_leader_key = '<Space>'
 
 " ctrlp
 nnoremap <C-b> :CtrlPBuffer<CR>
+
 let g:ctrlp_working_path_mode = 'ra' " current working dir
 let g:ctrlp_switch_buffer = 0 " always open files in new buffers
 let g:ctrlp_use_caching = 1
-" let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_custom_ignore = '\.git$\|\vendor/*|\vendors/*|\.sass-cache/*|dist/*|build/*|node_modules/*|tmp/*|doc/*'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_extensions = ['buffertag', 'line', 'dir']
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
@@ -367,6 +363,7 @@ let g:use_emmet_complete_tag = 1
 " Syntastic
 nnoremap <silent> <down> :lnext<CR>
 nnoremap <silent> <up> :lprev<CR>
+
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_javascript_checkers = ['jshint']
@@ -375,14 +372,18 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html', 'python'] }
 " Goyo (Distraction free)
 nnoremap <silent> <leader>z :Goyo<cr>
 
+" JSON syntax
+let g:vim_json_syntax_conceal = 0
+
 " Tagbar
 nnoremap <F8> :TagbarToggle<CR>
 
 " JSTern
-let g:tern_map_keys = 1
 nnoremap <leader>td :TernDef<CR>
 nnoremap <leader>tr :TernRefs<CR>
 nnoremap <leader>tR :TernRename<CR>
+
+let g:tern_map_keys = 1
 
 " sneak
 let g:sneak#s_next = 1
