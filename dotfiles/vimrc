@@ -311,10 +311,10 @@ command! -nargs=* UnWrap set list
 
 " Hardmode
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
-let g:HardMode = 1
-let g:HardMode_hjklLimit = 2
 
-let g:vim_json_syntax_conceal = 0
+let g:HardMode = 0
+let g:HardMode_hjklLimit = 3
+
 
 " Nerdtree
 noremap <F2> :NERDTreeToggle<CR>
