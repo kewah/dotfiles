@@ -100,6 +100,17 @@ set statusline+=%w%h%m%r " Options
 set statusline+=\ %y " Type
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 
+" Hightlight when the line is longer than 80 chars
+augroup collumnLimit
+  autocmd!
+  autocmd BufEnter,WinEnter,Filetype javascript,markdown,php
+    \ highlight CollumnLimit guibg=NONE guifg=VioletRed gui=bold
+  let collumnLimit = 80
+  let pattern = '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
+  autocmd BufEnter,WinEnter,Filetype javascript,markdown,php
+    \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+augroup END
+
 autocmd BufNewFile,BufRead *.md set ft=markdown
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
