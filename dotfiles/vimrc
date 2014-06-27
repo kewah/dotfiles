@@ -200,6 +200,8 @@ nmap <CR> o<Esc>k
 imap <D-Return> <C-o>o
 imap <S-Return> <C-o>O
 
+nmap <space>o }O
+
 " Speed up viewport scrolling
 nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
