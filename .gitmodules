@@ -16,9 +16,6 @@
 [submodule "vim/bundle/vim-node"]
 	path = vim/bundle/vim-node
 	url = https://github.com/moll/vim-node.git
-[submodule "vim/bundle/tcomment_vim"]
-	path = vim/bundle/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
@@ -127,3 +124,6 @@
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
