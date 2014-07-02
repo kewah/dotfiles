@@ -228,6 +228,10 @@ map <C-L> <C-W>l
 map <leader>wh <C-w>t<C-w>H
 map <leader>wv <C-w>t<C-w>K
 
+" Moving selection
+vnoremap <C-k> :mo'<-- <CR> gv
+vnoremap <C-j> :mo'>+ <CR> gv
+
 " swtich between tabs
 noremap <Right> :tabn<CR>
 noremap <Left> :tabp<CR>
