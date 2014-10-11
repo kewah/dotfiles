@@ -10,6 +10,14 @@ snippet cons "console.log"
 console.log(${VISUAL}$0);
 endsnippet
 
+snippet ct "console.logTitle"
+console.log('\n---- ${VISUAL}$0 ----');
+endsnippet
+
+snippet cv "console.logVar"
+console.log('$1:', $0);
+endsnippet
+
 snippet self "self = this" b
 var self = this;
 endsnippet
@@ -35,7 +43,8 @@ for ($3 = 0; $3 < $1; $3++) {
 endsnippet
 
 snippet ford "for decrement" b
-var ${1:i}, ${2:item};
+var ${2:item};
+var ${1:i};
 
 for ($1 = ${3:array}.length - 1; $1 >= 0; $1--) {
   $2 = $3[$1];
@@ -50,6 +59,14 @@ var ${3:item};
 while ($1--) {
   $3 = $2[$1];
   ${VISUAL}$0
+}
+endsnippet
+
+snippet fin "for in" b
+for (var ${1:key} in ${2:source}) {
+  if ($2.hasOwnProperty($1)) {
+    ${0}
+  }
 }
 endsnippet
 
@@ -121,6 +138,15 @@ e.stopPropagation();
 ${VISUAL}$0
 endsnippet
 
+snippet /(?<!^)fragment/ "document fragment" r
+document.createDocumentFragment();
+${VISUAL}$0
+endsnippet
+
+snippet /(?<!^)create/ "create element" r
+document.createElement($0);
+endsnippet
+
 ###############
 #  FUNCTIONS  #
 ###############
@@ -137,16 +163,22 @@ function ${1:name}(${2}) {
 }
 endsnippet
 
-snippet f: "Object function" b
+snippet of "Object function" b
 ${1:name}: function($2) {
   ${VISUAL}$0
-}${3:,}
+},
 endsnippet
 
 snippet fv "var function" b
 var ${1:name} = function($2) {
   ${VISUAL}$0
 };
+endsnippet
+
+snippet /(?<!^)fb/ "bind function" r
+_.bind(function() {
+  ${VISUAL}$0
+}, this)
 endsnippet
 
 snippet iife "Immediately-Invoked Function Expression (iife)" b
@@ -159,6 +191,12 @@ snippet sett "setTimeout function"
 setTimeout(function() {
   ${VISUAL}$0
 }, ${1:10});
+endsnippet
+
+snippet setb "setTimeout function"
+setTimeout(_.bind(function() {
+  ${VISUAL}$0
+}, this), ${1:10});
 endsnippet
 
 snippet /(?<!^)bind/ "bind(this)" r
@@ -178,6 +216,12 @@ snippet prot "protype" b
 ${1:class}.prototype.${2:method} = function(${3:arguments}) {
   ${VISUAL}$0
 };
+endsnippet
+
+snippet then "then" b
+${1:promise}.then(function(${2:value}) {
+  ${VISUAL}$0
+});
 endsnippet
 
 ############

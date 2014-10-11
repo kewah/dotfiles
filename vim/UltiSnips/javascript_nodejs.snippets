@@ -1,22 +1,62 @@
 priority -50
 
-snippet mod "module.exports" b
+snippet me "module.exports" b
 module.exports = $1;
 endsnippet
 
-snippet exp "exports = module.exports" b
-exports = module.exports = ${1};
+snippet ex "exports = module.exports" b
+exports.${1:name} = $2;
 endsnippet
 
-snippet /(?<!^)req/ "require" r
+snippet exm "exports = module.exports" b
+exports = module.exports = $1;
+endsnippet
+
+snippet /(?<!^)re/ "require" r
 require('${1:path}');
 endsnippet
 
-snippet /^req/ "require" r
+snippet /^re/ "require" r
 var ${1:name} = require('${2:path}');
 endsnippet
 
 snippet env "env" b
 #!/usr/bin/env node
 ${VISUAL}$0
+endsnippet
+
+snippet cb "callback" b
+function(err${1:, value}) {
+  ${0}
+}
+endsnippet
+
+snippet /(?<!^)on/ "on" r
+on('${2:event}', function(${3:arguments}) {
+  ${0}
+});
+endsnippet
+
+snippet /^on/ "on" r
+${1:emitter}.on('${2:event}', function(${3:arguments}) {
+  ${0}
+});
+endsnippet
+
+snippet /(?<!^)once/ "once" r
+once('${2:event}', function(${3:arguments}) {
+  ${0}
+});
+endsnippet
+
+snippet /^once/ "once" r
+${1:emitter}.once('${2:event}', function(${3:arguments}) {
+  ${0}
+});
+endsnippet
+
+snippet nt "nextTick" b
+${1:process}.nextTick(function() {
+  ${0}
+});
 endsnippet
