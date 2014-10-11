@@ -127,3 +127,9 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "vim/bundle/vim-jsx.git"]
+	path = vim/bundle/vim-jsx.git
+	url = https://github.com/mxw/vim-jsx.git
+[submodule "vim/bundle/PHP-Indenting-for-VIm"]
+	path = vim/bundle/PHP-Indenting-for-VIm
+	url = https://github.com/2072/PHP-Indenting-for-VIm
