@@ -378,14 +378,31 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Airline
 let g:airline#extensions#tagbar#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline_enable_branch = 0
+let g:airline_enable_hunks = 0
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
+let g:airline_theme = 'powerlineish'
+
 if has("gui_running")
-  let g:airline_theme = 'powerlineish'
-  let g:airline_powerline_fonts = 1
-  let g:airline_enable_branch = 0
-  let g:airline_enable_hunks = 0
-  let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 else
-  autocmd VimEnter * AirlineToggle
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = ''
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = 'LN'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
 endif
 
 " Emmet
