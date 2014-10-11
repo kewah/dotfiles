@@ -1,4 +1,4 @@
-colorscheme twilight
+" colorscheme twilight
 
 set guifont=Consolas\ for\ Powerline:h13
 set guioptions-=T " remove toolbar
