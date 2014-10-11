@@ -259,6 +259,20 @@ noremap <leader>os :sp %%
 noremap <leader>ov :vsp %%
 noremap <leader>ot :tabe %%
 
+if has("gui_running")
+  " Cmd+1...9 = go to that tab
+  map <silent> <D-1> 1gt
+  map <silent> <D-2> 2gt
+  map <silent> <D-3> 3gt
+  map <silent> <D-4> 4gt
+  map <silent> <D-5> 5gt
+  map <silent> <D-6> 6gt
+  map <silent> <D-7> 7gt
+  map <silent> <D-8> 8gt
+  map <silent> <D-9> 9gt
+endif
+
+
 " Strip trailing whitespace
 function! StripWhitespace()
   let save_cursor=getpos(".")
