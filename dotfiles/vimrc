@@ -16,19 +16,21 @@ set background=dark
 colorscheme base16-default
 
 " Remove delay between modes
-set timeoutlen=1000
-set ttimeoutlen=10
+set timeout
+set timeoutlen=1000 " Wait {num} ms before timing out a mapping
+set ttimeoutlen=0 " Wait {num} ms to change mode
 
 set autoindent
 set autoread " reload files when changed on disk, i.e. via `git checkout`
-set paste
+" set paste
+set pastetoggle=<F3>
 set clipboard=unnamed " yank and paste with the system clipboard
 set copyindent
 set backspace=indent,eol,start
 set cursorline " Highlight current line
 set nu " Enable line numbers
 set relativenumber
-set encoding=utf-8 nobomb " BOM often causes trouble
+set encoding=utf-8
 set gdefault " assume the /g flag on :s substitutions
 set hlsearch " Highlight searches
 set hidden
@@ -37,6 +39,7 @@ set smartcase " Ignore case if search pattern is all lowercase
 set incsearch " Highlight dynamically as pattern is typed.
 set linespace=3 " Line height
 set mousehide " Hide mouse when typing
+set mouse=a
 set noerrorbells " don't beep
 set visualbell " don't beep
 set nostartofline
@@ -123,6 +126,13 @@ autocmd FileType markdown setlocal spell
 " Strip trailing whitespace automatically when the file is saved
 autocmd BufWritePre *.js :call StripWhitespace()
 
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+
 "-----------------------------------------------------------"
 " KEY MAPPING
 "-----------------------------------------------------------"
@@ -145,10 +155,13 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" No Ex mode (see :help Q)
+nnoremap Q <nop>
+
 noremap ; :
 noremap : ;
 
-imap jk <Esc>
+inoremap jk <ESC>
 
 " Buffer
 nnoremap <leader>q :bp\|bd #<CR> " Delete the current buffer
@@ -320,7 +333,6 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 let g:HardMode = 0
 let g:HardMode_hjklLimit = 3
-
 
 " Nerdtree
 noremap <F2> :NERDTreeToggle<CR>
