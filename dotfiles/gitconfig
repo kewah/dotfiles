@@ -9,6 +9,7 @@
   a = add
   ap = add -p
   aa = add -A
+  ai = add -i
   c = commit --verbose
   p = push
   d = !git diff --color-words | less -RS
