@@ -78,6 +78,23 @@ function gi() {
   curl http://www.gitignore.io/api/$@
 }
 
+# By Moox: https://github.com/MoOx/dotfiles/blob/master/components/node/functions/npmpublish
+# `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`
+# defaults to `patch`
+function npmpublish() {
+  git pull --rebase && \
+  rm -rf node_modules && \
+  npm install && \
+  npm test && \
+
+  mversion ${1:=patch} -m -n && \
+
+  npm publish && \
+
+  git push origin master && \
+  git push origin master --tags
+}
+
 
 # Paths
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
