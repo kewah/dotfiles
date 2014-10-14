@@ -87,6 +87,9 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 source $HOME/.zfunctions/zsh-syntax-highlighting
 
+# z(1)
+. /usr/local/etc/profile.d/z.sh
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
