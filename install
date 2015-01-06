@@ -86,6 +86,7 @@ fi
 link "dotfiles/aliases" ".aliases"
 link "dotfiles/agignore" ".agignore"
 link "dotfiles/esformatter" ".esformatter"
+link "dotfiles/eslintrc" ".eslintrc"
 link "dotfiles/gitconfig" ".gitconfig"
 link "dotfiles/gitignore" ".gitignore"
 link "dotfiles/gitmessage" ".gitmessage"
