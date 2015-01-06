@@ -133,3 +133,9 @@
 [submodule "vim/bundle/PHP-Indenting-for-VIm"]
 	path = vim/bundle/PHP-Indenting-for-VIm
 	url = https://github.com/2072/PHP-Indenting-for-VIm
+[submodule "vim/bundle/smartpairs"]
+	path = vim/bundle/smartpairs
+	url = https://github.com/gorkunov/smartpairs.vim
+[submodule "vim/bundle/vim-csscomb"]
+	path = vim/bundle/vim-csscomb
+	url = https://github.com/csscomb/vim-csscomb
