@@ -137,10 +137,6 @@ endif
 " KEY MAPPING
 "-----------------------------------------------------------"
 
-" Edit and reload my vimrc
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -441,7 +437,7 @@ nnoremap <leader>wt :call WMReStack()<CR>
 
 " Ultisnips
 let g:UltiSnipsEditSplit = "vertical"
-let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger = "<c-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
