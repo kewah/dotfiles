@@ -1,12 +1,17 @@
-alias mkdir='mkdir -p'
-alias ...='../..'
+alias mkdir="mkdir -p"
+alias ...="../.."
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
 
+alias vim="nvim"
+alias tmux="TERM=screen-256color-bce tmux"
+
 alias g="git"
+alias ns="npm i -S"
+alias nd="npm i -D"
 
 alias copyssh="pbcopy < ~/.ssh/id_rsa.pub"
-alias limitopen='sudo ulimit -n 10480'
+alias limitopen="sudo ulimit -n 10480"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias s="cd ~/Sites"
