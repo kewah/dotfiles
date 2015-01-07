@@ -2,7 +2,6 @@
 .git
 node_modules
 bower_components
-components
 .sass-cache
 build
 vendors
