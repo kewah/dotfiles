@@ -1,7 +1,6 @@
 .DS_Store
-
-/vim/sessions/
-
-/vim/session/
-
-/vim/undo/
+vim/sessions
+vim/session
+vim/undo
+vim/plugged
+vim/autoload/plug.vim

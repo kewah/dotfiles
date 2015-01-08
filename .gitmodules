@@ -4,6 +4,3 @@
 [submodule "zsh/themes/zsh-syntax-highlighting"]
 	path = zsh/themes/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "vim/bundle/Vundle.vim"]
-	path = vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim

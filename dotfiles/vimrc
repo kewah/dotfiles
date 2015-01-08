@@ -1,55 +1,65 @@
 set nocompatible
 
-" Required for Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+"-----------------------------------------------------------"
+" VIM-PLUG
+"-----------------------------------------------------------"
+
+" Install vim-plug if necessary
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !mkdir -p ~/.vim/autoload
+  silent !curl -fLo ~/.vim/autoload/plug.vim
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plugin 'rking/ag.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'junegunn/goyo.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'gorkunov/smartpairs.vim'
-Plugin 'ervandew/supertab'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-surround'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'moll/vim-node.git'
-Plugin 'henrik/vim-qargs'
-Plugin 'kshenoy/vim-signature'
-Plugin 'justinmk/vim-sneak'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'sjl/vitality.vim'
+Plug 'rking/ag.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kien/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
+Plug 'gorkunov/smartpairs.vim'
+Plug 'ervandew/supertab'
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'SirVer/ultisnips'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'henrik/vim-qargs'
+Plug 'kshenoy/vim-signature'
+Plug 'justinmk/vim-sneak'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'sjl/vitality.vim'
 
 " Syntaxes
-Plugin 'pangloss/vim-javascript'
-Plugin 'elzr/vim-json'
-Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'mxw/vim-jsx.git'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'wavded/vim-stylus'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'mxw/vim-jsx', {'for': 'jsx'}
+Plug 'mustache/vim-mustache-handlebars', {'for': 'handlebars'}
+Plug 'wavded/vim-stylus'
 
-call vundle#end()
-filetype plugin indent on
-syntax on
+call plug#end()
+
+
+"-----------------------------------------------------------"
+" BASIC SETTINGS
+"-----------------------------------------------------------"
 
 " change the mapleader from / to ,
 let mapleader=","
@@ -380,6 +390,7 @@ nnoremap <leader>n :call RenameFile()<cr
 " Soft wrapping text with :Wrap
 command! -nargs=* Wrap set wrap linebreak nolist
 command! -nargs=* UnWrap set list
+
 
 "-----------------------------------------------------------"
 " PLUGIN SETTINGS
