@@ -324,6 +324,48 @@ if has("gui_running")
   map <silent> <D-9> 9gt
 endif
 
+if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
+  " Ctrl-Enter
+  set  <F13>=[25~
+  map  <F13> <C-CR>
+  map! <F13> <C-CR>
+
+  " Shift-Enter
+  set  <F14>=[27~
+  map  <F14> <S-CR>
+  map! <F14> <S-CR>
+
+  " Ctrl-Space
+  set  <F15>=[29~
+  map  <F15> <C-Space>
+  map! <F15> <C-Space>
+
+  " Shift-Space
+  set  <F16>=[30~
+  map  <F16> <S-Space>
+  map! <F16> <S-Space>
+
+  " Ctrl-Backspace
+  set  <F17>=[1;5P
+  map  <F17> <C-BS>
+  map! <F17> <C-BS>
+
+  " Alt-Tab
+  set  <F18>=[1;5Q
+  map  <F18> <M-Tab>
+  map! <F18> <M-Tab>
+
+  " Alt-Shift-Tab
+  set  <F19>=[1;5R
+  map  <F19> <M-S-Tab>
+  map! <F19> <M-S-Tab>
+
+  " Ctrl-Comma
+  set  <F26>=[33~
+  map  <F26> <C-,>
+  map! <F26> <C-,>
+endif
+
 
 " Strip trailing whitespace
 function! StripWhitespace()
