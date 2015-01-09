@@ -12,7 +12,7 @@
   ai = add -i
   c = commit --verbose
   p = push
-  d = !git diff --color-words | less -RS
+  d = diff
   cm = commit -am
   ac = !git add -A && git commit -a --verbose
   acm = !git add -A && git commit -am
@@ -23,6 +23,7 @@
   me = merge --no-ff
   amend = commit -a --amend
   reb = rebase -p
+  pu = pull --rebase
   ls = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   alias = config --get-regexp alias
@@ -37,26 +38,36 @@
 [core]
   excludesfile = ~/.gitignore
 
+[commit]
+  template = ~/.gitmessage
+
 [advice]
   statusHints = false
   pushNonFastForward = false
+
+[diff]
+  mnemonicPrefix = true
+  renames = true
 
 [merge]
   stat = true
   tool = opendiff
 
-[push]
-  default = current
-
 [mergetool]
   keepBackup = false
   keepTemporaries = false
+  prompt = false
 
 [include]
   path = ~/.gitconfig.local
 
-[commit]
-  template = ~/.gitmessage
+[push]
+  default = current
 
-[help]
-  autocorrect = 1
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+
+[rerere]
+	autoupdate = true
