@@ -43,6 +43,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'justinmk/vim-sneak'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/vitality.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Syntaxes
 Plug 'pangloss/vim-javascript'

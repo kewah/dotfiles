@@ -3,7 +3,7 @@ alias ...="../.."
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
 
-alias vim="nvim"
+#alias vim="nvim"
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias g="git"

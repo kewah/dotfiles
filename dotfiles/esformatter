@@ -2,7 +2,6 @@
   "plugins": [
     "esformatter-quotes",
     "esformatter-semicolons",
-    "esformatter-braces",
     "esformatter-literal-notation",
     "esformatter-parseint"
   ],

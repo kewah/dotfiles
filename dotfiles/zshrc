@@ -14,6 +14,10 @@ autoload -U compinit && compinit
 setopt auto_cd
 setopt no_case_glob  # set ignore case for ls etc
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'   # case insensitive completion for cd etc *N*
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
 
 # load our own completion functions
 fpath=(
