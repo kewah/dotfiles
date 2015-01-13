@@ -1,15 +1,31 @@
+# Remap prefix to ctrl-a
+set -g prefix C-a
+unbind C-b
+
+# Change default delay
+set -s escape-time 1
+
 # Use the system clipboard
 # brew install reattach-to-user-namespace
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Setup 'v' to begin selection as in Vim
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
 # 256 colors for vim
 set -g default-terminal "screen-256color"
 
-# Reload config with a key
-bind-key r source-file ~/.tmux.conf \; display "Config reloaded!"
-
 # Index starts from 1
 set-option -g base-index 1
+setw -g pane-base-index 1
 
 # Renumber windows when a window is closed
 set-option -g renumber-windows on
@@ -18,22 +34,23 @@ set-option -g renumber-windows on
 set-window-option -g utf8 on
 
 # Mouse works as expected
-set -g mode-mouse on
+setw -g mode-mouse on
 set -g mouse-select-pane on
 set -g mouse-resize-pane on
 set -g mouse-select-window on
 
 # Style
-set-option -g status-justify left
+set -g status-justify left
 set-option -g status-keys emacs
-set-option -g status-left '#[fg=colour185] #h #[bg=colour236]'
+set-option -g status-left '#[fg=colour185] #S #[bg=colour236]'
+set-option -g status-right '#[fg=colour185]%d %b %R'
 set-option -g status-left-length 16
 set-option -g status-bg colour237
 set-option -g status-interval 60
 set-option -g pane-active-border-fg colour240
 set-option -g pane-border-fg colour238
-set-window-option -g window-status-format '#[bg=colour239]#[fg=colour107] #I #[fg=colour110] #W#[fg=colour195] '
-set-window-option -g window-status-current-format '#[bg=colour235]#[fg=colour215] #I #[bg=colour235]#[fg=colour167] #W '
+set-window-option -g window-status-format '#[bg=colour239]#[fg=colour107] #I:#[fg=colour110] #W#[fg=colour195] '
+set-window-option -g window-status-current-format '#[bg=colour235]#[fg=colour215] #I:#[bg=colour235]#[fg=colour167] #W '
 
 # smart pane switching with awareness of vim splits
 bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
@@ -44,3 +61,7 @@ bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
+
+# Reload config with a key
+bind r source-file ~/.tmux.conf \; display "Config reloaded!"
+
