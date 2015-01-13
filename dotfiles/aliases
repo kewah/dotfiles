@@ -3,8 +3,9 @@ alias ...="../.."
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
 
-#alias vim="nvim"
-alias tmux="TERM=screen-256color-bce tmux"
+# Turn off ctrl + s mapping, so vim can use it.
+alias vim="stty stop '' -ixoff; vim"
+alias tmux="tmux -2"
 
 alias g="git"
 alias ns="npm i -S"
