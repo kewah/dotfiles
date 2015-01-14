@@ -2,6 +2,7 @@ alias mkdir="mkdir -p"
 alias ...="../.."
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
+alias c="clear"
 
 # Turn off ctrl + s mapping, so vim can use it.
 alias vim="stty stop '' -ixoff; vim"
@@ -13,11 +14,7 @@ alias nd="npm i -D"
 
 alias copyssh="pbcopy < ~/.ssh/id_rsa.pub"
 alias limitopen="sudo ulimit -n 10480"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias s="cd ~/Sites"
 alias compresspng="pngquant 256 *.png --ext=.png --force"
-alias fuck="sudo $(history -p \!\!)"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
