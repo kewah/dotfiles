@@ -43,7 +43,13 @@ Plug 'kshenoy/vim-signature'
 Plug 'justinmk/vim-sneak'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/vitality.vim'
+Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'wakatime/vim-wakatime'
+
+if !has("gui_running")
+  Plug 'djoshea/vim-autoread'
+endif
 
 " Syntaxes
 Plug 'pangloss/vim-javascript'
@@ -180,8 +186,6 @@ autocmd BufNewFile,BufRead *.md set ft=markdown
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd FileType markdown setlocal spell
 
-" Strip trailing whitespace automatically when the file is saved
-autocmd BufWritePre *.js :call StripWhitespace()
 
 "-----------------------------------------------------------"
 " KEY MAPPING
@@ -204,13 +208,21 @@ vnoremap <F1> <ESC>
 " No Ex mode (see :help Q)
 nnoremap Q <nop>
 
+" Mapping semicolon to colon for quicker colon commands
 noremap ; :
 noremap : ;
 
+" Using the keystroke t insert mode
 inoremap jk <ESC>
+
+" Quickly move to the beginning or end of a line
+nnoremap H ^
+nnoremap L $
 
 " Buffer
 nnoremap <leader>q :bp\|bd #<CR> " Delete the current buffer
+nnoremap <space>l :bnext<CR> " Go to next buffer
+nnoremap <space>h :bprevious<CR> " Go to next buffer
 
 " Indent
 nnoremap <Tab> >>_
@@ -239,8 +251,8 @@ vmap <silent> <leader>d "_d
 " nmap <leader>P "+P
 
 " Paste last yank
-nmap <leader> p "0p
-nmap <leader> P "0P
+nmap <leader>p "0p
+nmap <leader>P "0P
 
 " Quick yanking to the end of the line
 nmap Y y$
@@ -295,6 +307,17 @@ vnoremap <C-j> :mo'>+ <CR> gv
 noremap <Right> :tabn<CR>
 noremap <Left> :tabp<CR>
 
+" leader+1...9 = go to that tab
+map <silent> <leader>1 1gt
+map <silent> <leader>2 2gt
+map <silent> <leader>3 3gt
+map <silent> <leader>4 4gt
+map <silent> <leader>5 5gt
+map <silent> <leader>6 6gt
+map <silent> <leader>7 7gt
+map <silent> <leader>8 8gt
+map <silent> <leader>9 9gt
+
 " Auto indent with a new line
 imap <C-Return> <CR><CR><C-o>k<Tab>
 
@@ -304,19 +327,6 @@ noremap <leader>oe :e %%
 noremap <leader>os :sp %%
 noremap <leader>ov :vsp %%
 noremap <leader>ot :tabe %%
-
-if has("gui_running")
-  " Cmd+1...9 = go to that tab
-  map <silent> <D-1> 1gt
-  map <silent> <D-2> 2gt
-  map <silent> <D-3> 3gt
-  map <silent> <D-4> 4gt
-  map <silent> <D-5> 5gt
-  map <silent> <D-6> 6gt
-  map <silent> <D-7> 7gt
-  map <silent> <D-8> 8gt
-  map <silent> <D-9> 9gt
-endif
 
 if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   " Ctrl-Enter
@@ -333,11 +343,6 @@ if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   set  <F15>=[29~
   map  <F15> <C-Space>
   map! <F15> <C-Space>
-
-  " Shift-Space
-  set  <F16>=[30~
-  map  <F16> <S-Space>
-  map! <F16> <S-Space>
 
   " Ctrl-Backspace
   set  <F17>=[1;5P
@@ -457,7 +462,7 @@ let g:ctrlp_working_path_mode = 'ra' " current working dir
 let g:ctrlp_switch_buffer = 0 " always open files in new buffers
 let g:ctrlp_use_caching = 1
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_extensions = ['buffertag', 'line', 'dir']
+let g:ctrlp_extensions = ['buffertag', 'dir']
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Airline
@@ -468,8 +473,7 @@ let g:airline_enable_hunks = 0
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 let g:airline_theme = 'powerlineish'
 
-if has("gui_running")
-else
+if !has("gui_running")
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
@@ -508,9 +512,6 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " JSON syntax
 let g:vim_json_syntax_conceal = 0
 
-" Tagbar
-nnoremap <F8> :TagbarToggle<CR>
-
 " JSTern
 nnoremap <leader>td :TernDef<CR>
 nnoremap <leader>tr :TernRefs<CR>
@@ -542,6 +543,15 @@ let g:session_autosave = "no"
 " Gists
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
+
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+
+" JSX / React
+let g:jsx_ext_required = 0
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")

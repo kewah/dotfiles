@@ -1,11 +1,15 @@
 " colorscheme twilight
 
 set guifont=Consolas\ for\ Powerline:h13
-set guioptions-=T " remove toolbar
-set guioptions-=l
-set guioptions-=r " remove right-hand scrollbar
-set guioptions-=L " remove left-hand scrollbar
-set gcr=a:blinkon0 " Turn off the blinking cursor in normal mode
+" Remove all extra UI from macvim
+set guioptions=
+
+" Turn off the blinking cursor in normal mode
+set gcr=a:blinkon0
 
 " Change the bracket highlight
 hi MatchParen guibg=NONE guifg=yellow gui=bold
+
+hi TabLine guifg=#505050 guibg=#151515
+hi TabLineFill guifg=#505050 guibg=#151515
+hi TabLineSel guifg=#FFFFFF guibg=#636363 gui=bold
