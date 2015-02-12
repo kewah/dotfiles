@@ -1,0 +1,123 @@
+priority -50
+
+snippet jsx "define jsx dom" b
+/** @jsx React.DOM */
+endsnippet
+
+snippet rcc "createClass" b
+var React = require('React');
+
+var ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} = React.createClass({
+	render() {
+		return (
+			$0
+		);
+	}
+});
+
+module.exports = $1;
+endsnippet
+
+snippet cs "React.addons.classSet" b
+var cx = React.addons.classSet;
+endsnippet
+
+snippet pt "propTypes" b
+propTypes: {
+	${1}: React.PropTypes.${2:string}
+},
+endsnippet
+
+snippet gdp "get default props" b
+getDefaultProps() {
+	return {
+		${1}
+	};
+},$0
+endsnippet
+
+snippet gis "get initial state" b
+getInitialState() {
+	return {
+		${1}: ${2}
+	};
+},$0
+endsnippet
+
+snippet cdm "component did mount" b
+componentDidMount() {
+  ${1}
+},$0
+endsnippet
+
+snippet cdup "component did update" b
+componentDidUpdate(prevProps, prevState) {
+	${1}
+},$0
+endsnippet
+
+snippet cwm "component will mount" b
+componentWillMount() {
+	${1}
+},$0
+endsnippet
+
+snippet cwr "component will receive props" b
+componentWillReceiveProps(nextProps) {
+	${1}
+},$0
+endsnippet
+
+snippet cwun "component will unmount" b
+componentWillUnmount() {
+	${1}
+},$0
+endsnippet
+
+snippet cwu "component will update" b
+componentWillUpdate(nextProps, nextState) {
+	${1}
+},$0
+endsnippet
+
+snippet scu "should component update"
+shouldComponentUpdate(nextProps, nextState) {
+	${1}
+},$0
+endsnippet
+
+snippet cwa "component will appear" b
+componentWillAppear(done) {
+	${1}
+},$0
+endsnippet
+
+snippet cwe "component will enter" b
+componentWillEnter(done) {
+	${1}
+},$0
+endsnippet
+
+snippet cwl "component will leave" b
+componentWillLeave(done) {
+	${1}
+},$0
+endsnippet
+
+snippet sst "set state" b
+this.setState({
+	${1}: ${2}
+});$0
+endsnippet
+
+snippet props "get property" i
+this.props.${1}
+endsnippet
+
+snippet state "get state" i
+this.state.${1}
+endsnippet
+
+snippet trp
+this.transferPropsTo(${VISUAL}$0);
+endsnippet
