@@ -2,6 +2,12 @@
 set -g prefix C-a
 unbind C-b
 
+# 256 colors for vim
+set -g default-terminal "screen-256color"
+
+# UTF-8
+set-window-option -g utf8 on
+
 # Change default delay
 set -s escape-time 1
 
@@ -20,18 +26,12 @@ bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 unbind -t vi-copy Enter
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
-# 256 colors for vim
-set -g default-terminal "screen-256color"
-
 # Index starts from 1
 set-option -g base-index 1
 setw -g pane-base-index 1
 
 # Renumber windows when a window is closed
 set-option -g renumber-windows on
-
-# UTF-8
-set-window-option -g utf8 on
 
 # Mouse works as expected
 setw -g mode-mouse on
@@ -62,6 +62,13 @@ bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 # C-l is taken over by vim style pane navigation
 bind C-l send-keys 'C-l'
 
+# Bind ']' to use pbpaste
+bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
+
+# New window with default path set to last path
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
 # Reload config with a key
 bind r source-file ~/.tmux.conf \; display "Config reloaded!"
-
