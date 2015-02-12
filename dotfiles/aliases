@@ -11,6 +11,7 @@ alias tmux="tmux -2"
 alias g="git"
 alias ns="npm i -S"
 alias nd="npm i -D"
+alias ni="npm i"
 
 alias copyssh="pbcopy < ~/.ssh/id_rsa.pub"
 alias limitopen="sudo ulimit -n 10480"
