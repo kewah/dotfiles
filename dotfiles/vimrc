@@ -46,6 +46,7 @@ Plug 'sjl/vitality.vim'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wakatime/vim-wakatime'
+Plug 'millermedeiros/vim-esformatter'
 
 if !has("gui_running")
   Plug 'djoshea/vim-autoread'
@@ -376,26 +377,6 @@ function! StripWhitespace()
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
-function! JSFormat()
-  " Preparation: save last search, and cursor position.
-  let l:win_view = winsaveview()
-  let l:last_search = getreg('/')
-
-  " call esformatter with the contents form and cleanup the extra newline
-  execute ":%!esformatter"
-  if v:shell_error
-    echoerr 'format script failed'
-    undo
-    return 0
-  endif
-  " Clean up: restore previous search history, and cursor position
-  call winrestview(l:win_view)
-  call setreg('/', l:last_search)
-endfunction
-nnoremap <silent> <leader>es :call JSFormat()<cr>
-vnoremap <silent> <leader>es :! esformatter<CR>
-nnoremap <silent> <leader>ec :CSSComb<CR>
-
 " Toggle relatve/abolute line number
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -552,6 +533,11 @@ let g:gundo_right = 1
 
 " JSX / React
 let g:jsx_ext_required = 0
+
+" Formatter
+nnoremap <silent> <leader>es :Esformatter<CR>
+vnoremap <silent> <leader>es :EsformatterVisual<CR>
+nnoremap <silent> <leader>ec :CSSComb<CR>
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
