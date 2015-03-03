@@ -8,6 +8,7 @@ vendors
 images
 fonts
 
+*.pyc
 *.png
 *.jpg
 *.ttf

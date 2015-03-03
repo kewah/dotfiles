@@ -3,6 +3,7 @@ alias ...="../.."
 alias l="ls -lG"
 alias lsa="ls -AGFoh"
 alias c="clear"
+alias o="open ."
 
 # Turn off ctrl + s mapping, so vim can use it.
 alias vim="stty stop '' -ixoff; vim"
@@ -11,6 +12,7 @@ alias tmux="tmux -2"
 alias g="git"
 alias ns="npm i -S"
 alias nd="npm i -D"
+alias ng="npm i -g"
 alias ni="npm i"
 
 alias copyssh="pbcopy < ~/.ssh/id_rsa.pub"
