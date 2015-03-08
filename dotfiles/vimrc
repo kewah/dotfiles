@@ -10,7 +10,7 @@ source ~/.vim/config/mappings.vim
 " runtime macros/matchit.vim
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal spell textwidth=80
 
 autocmd BufNewFile,BufRead *.md set ft=markdown
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'json=javascript', 'xml', 'html']

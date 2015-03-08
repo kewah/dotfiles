@@ -1,4 +1,17 @@
 {
+  "ecmaFeatures" : {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "defaultParams": true,
+    "forOf": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "templateStrings": true,
+    "jsx": true,
+  },
+
   "env": {
     "node": true,
     "browser": true
@@ -65,7 +78,7 @@
     "one-var": 0,
     "no-unused-expressions": 0,
     "padded-blocks": "never",
-    "quotes": [2, "single"],
+    "quotes": [1, "single"],
     "quote-props": "as-needed",
     "semi": 1,
     "space-after-keywords": [1, "always"],

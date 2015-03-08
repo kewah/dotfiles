@@ -99,6 +99,17 @@ function npmpublish() {
   git push origin master --tags
 }
 
+function bump() {
+  git pull --rebase && \
+  rm -rf node_modules && \
+  npm install && \
+  npm test && \
+
+  mversion ${1:=patch} -m -n && \
+
+  git push origin master && \
+  git push origin master --tags
+}
 
 # Paths
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
@@ -110,6 +121,13 @@ source $HOME/.zfunctions/zsh-syntax-highlighting
 
 # z(1)
 . /usr/local/etc/profile.d/z.sh
+
+# Tmuxinator
+source ~/.bin/tmuxinator.zsh
+
+# NVM
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases

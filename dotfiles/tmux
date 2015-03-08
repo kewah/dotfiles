@@ -6,10 +6,12 @@ unbind C-b
 set -g default-terminal "screen-256color"
 
 # UTF-8
+set -g utf8 on
+set -g status-utf8 on
 set-window-option -g utf8 on
 
 # Change default delay
-set -s escape-time 1
+set -s escape-time 0
 
 # Use the system clipboard
 # brew install reattach-to-user-namespace

@@ -3,7 +3,10 @@
     "esformatter-quotes",
     "esformatter-semicolons",
     "esformatter-literal-notation",
-    "esformatter-parseint"
+    "esformatter-parseint",
+    "esformatter-jsx-ignore",
+    "esformatter-spaced-lined-comment",
+    "esformatter-var-each"
   ],
 
   "quotes": {
