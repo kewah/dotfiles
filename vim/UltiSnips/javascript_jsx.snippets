@@ -39,7 +39,7 @@ endsnippet
 snippet gis "get initial state" b
 getInitialState() {
 	return {
-		${1}: ${2}
+		${1}
 	};
 },$0
 endsnippet
@@ -118,6 +118,18 @@ snippet state "get state" i
 this.state.${1}
 endsnippet
 
+snippet refs "get refs" i
+this.refs.${1}
+endsnippet
+
 snippet trp
-this.transferPropsTo(${VISUAL}$0);
+this.transferPropsTo(${1});
+endsnippet
+
+snippet fdn "find DOM node" i
+React.findDOMNode(${1})
+endsnippet
+
+snippet gdn "get DOM node" i
+getDOMNode()${1}
 endsnippet
