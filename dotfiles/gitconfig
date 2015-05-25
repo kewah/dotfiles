@@ -20,6 +20,7 @@
   st = status -sb
   br = branch
   bra = branch -a
+  brd = branch -d
   me = merge --no-ff
   amend = commit -a --amend
   reb = rebase -p
@@ -63,6 +64,7 @@
 
 [push]
   default = current
+	followTags = true
 
 [pager]
 	log = diff-highlight | less
