@@ -1,0 +1,9 @@
+init.author.name=Antoine Lehurt
+init.author.email=code@kewah.com
+init.author.url=http://kewah.com/
+init.author.github=kewah
+email=code@kewah.com
+registry=https://registry.npmjs.org/
+prefix=~/.npm-packages
+init.ghrepo.message=Initial commit
+save-exact=true
