@@ -22,7 +22,7 @@ cask_install() {
 
 brew_run() {
   brew update
-  brew upgrade
+  brew upgrade --all
 
   echo "Homebrew:"
   echo "Installing packages..."
