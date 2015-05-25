@@ -5,17 +5,19 @@ npm_run() {
   echo "Installing packages..."
 
   local packages="\
-    autoprefixer \
-    browserify \
-    component \
     esformatter \
+    eslint \
     grunt-cli \
     gulp \
-    instant-markdown-d \
-    jshint \
+    httpster \
+    mversion \
     nodemon \
-    simple-server \
-    tldr \
+    n \
+    npm \
+    npm-check-updates \
+    npm-module-generator \
+    pure-prompt \
+    updatehammer \
     yo"
 
   npm i $packages -g --quiet

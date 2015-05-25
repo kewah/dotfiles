@@ -97,6 +97,8 @@ link "dotfiles/jshintrc" ".jshintrc"
 link "dotfiles/tmux" ".tmux.conf"
 link "vim" ".vim"
 link "dotfiles/zshrc" ".zshrc"
+link "dotfiles/zshenv" ".zshenv"
+link "dotfiles/npmrc" ".npmrc"
 
 if [ -e "${HOME}/.zfunctions" ]; then
   rm -rf "${HOME}/.zfunctions"
@@ -104,7 +106,6 @@ fi
 
 mkdir "${HOME}/.zfunctions"
 
-ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/pure/pure.zsh" "${HOME}/.zfunctions/prompt_pure_setup"
 ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" "${HOME}/.zfunctions/zsh-syntax-highlighting"
 
 chsh -s /bin/zsh
