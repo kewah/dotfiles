@@ -18,6 +18,10 @@ update_gem() {
   sudo gem update --system && sudo gem update
 }
 
+update_pip() {
+  pip install -U pip && pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U
+}
+
 for opt in $@
 do
   case $opt in
@@ -26,6 +30,7 @@ do
     --vim) vim=true ;;
     --npm) npm=true ;;
     --gem) gem=true ;;
+    --pip) pip=true ;;
     -*|--*) e_warning "Warning: invalid option $opt" ;;
   esac
 done
@@ -35,6 +40,7 @@ if [[ $all ]]; then
   update_brew
   update_vim
   update_npm
+  update_pip
   update_gem
 fi
 
@@ -52,6 +58,12 @@ if [[ $npm ]]; then
   echo "Update NPM's packages..."
   update_npm
 fi
+
+if [[ $pip  ]]; then
+  echo "Update Pip's packages..."
+  update_pip
+fi
+
 
 if [[ $gem ]]; then
   echo "Update Gem's packages..."
