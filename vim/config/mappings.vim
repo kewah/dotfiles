@@ -85,7 +85,7 @@ nnoremap <silent> <leader><space> :noh<cr>
 nmap <leader>f zfiB
 
 " Indent inner curly braces
-nmap <leader>i =iB
+nmap <leader>i =iB<C-o>
 
 " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
 map <C-j> <C-W>j
@@ -101,7 +101,7 @@ map <leader>wv <C-w>t<C-w>K
 vnoremap <C-k> :mo'<-- <CR> gv
 vnoremap <C-j> :mo'>+ <CR> gv
 
-" swtich between tabs
+" switch between tabs
 noremap <Right> :tabn<CR>
 noremap <Left> :tabp<CR>
 

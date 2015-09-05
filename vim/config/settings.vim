@@ -2,6 +2,7 @@
 set t_Co=256
 set background=dark
 colorscheme base16-default
+set encoding=utf-8
 
 " Remove delay between modes
 set timeout
@@ -10,15 +11,13 @@ set ttimeoutlen=0 " Wait {num} ms to change mode
 
 set autoindent
 set autoread " reload files when changed on disk, i.e. via `git checkout`
-" set paste
-set pastetoggle=<F3>
+set pastetoggle=<F3> " set paste
 set clipboard=unnamed " yank and paste with the system clipboard
 set copyindent
 set backspace=indent,eol,start
 set cursorline " Highlight current line
 set nu " Enable line numbers
 set relativenumber
-set encoding=utf-8
 set gdefault " assume the /g flag on :s substitutions
 set hlsearch " Highlight searches
 set hidden
