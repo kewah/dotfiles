@@ -1,0 +1,46 @@
+priority -50
+
+snippet vtransp "vue transition"
+${1:transitionName}: {
+  beforeEnter: function() {
+    this._transitionTl = createTransitionTimeline(this);
+  },
+
+  enter: function(el, done) {
+    var tl = this._transitionTl;
+    tl.eventCallback('onComplete', done);
+    tl.restart();
+
+    return function() {
+      tl.pause();
+    };
+  },
+
+  leave: function(el, done) {
+    var tl = this._transitionTl;
+
+    if (!tl) {
+      tl = createTransitionTimeline(this);
+      tl.seek(tl.totalDuration(), false);
+    }
+
+    tl.eventCallback('onReverseComplete', done);
+    tl.timeScale(2);
+    tl.reverse();
+
+    return function() {
+      tl.pause();
+    };
+  }
+}
+endsnippet
+
+snippet vtranstl "vue transition timeline creator"
+function createTransitionTimeline(vm) {
+  var tl = new TimelineMax({paused: true});
+
+  tl.fromTo(vm.$el, 0.5, {opacity: 0.01}, {opacity: 1});
+
+  return tl;
+}
+endsnippet

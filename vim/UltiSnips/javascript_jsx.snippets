@@ -4,134 +4,135 @@ snippet jsx "define jsx dom" b
 /** @jsx React.DOM */
 endsnippet
 
-snippet rcc "createClass" b
-var React = require('React');
-
-var ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} = React.createClass({
-	render() {
-		return (
-			$0
-		);
-	}
-});
-
-module.exports = $1;
+snippet pure "pure component" b
+import PureComponent from 'react-pure-render/component'
 endsnippet
 
-snippet cs "React.addons.classSet" b
-var cx = React.addons.classSet;
+snippet rcc "createClass" b
+import React, {Component} from 'react'
+
+export default class ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} extends Component {
+  static displayName = '$1'
+
+  render() {
+    return (
+      <div className="$1">
+      </div>
+    )
+  }
+}
 endsnippet
 
 snippet pt "propTypes" b
-propTypes: {
-	${1}: React.PropTypes.${2:string}
-},
+static propTypes = {
+	${1}: PropTypes.${2}
+}
 endsnippet
 
 snippet pta "React.PropTypes.array" i
-React.PropTypes.array
+PropTypes.array
 endsnippet
 
 snippet ptb "React.PropTypes.bool" i
-React.PropTypes.bool
+PropTypes.bool
 endsnippet
 
 snippet ptf "React.PropTypes.func" i
-React.PropTypes.func
+PropTypes.func
 endsnippet
 
 snippet ptn "React.PropTypes.number" i
-React.PropTypes.number
+PropTypes.number
 endsnippet
 
 snippet pto "React.PropTypes.object" i
-React.PropTypes.object
+PropTypes.object
 endsnippet
 
 snippet pts "React.PropTypes.string" i
-React.PropTypes.string
+PropTypes.string
 endsnippet
 
 snippet gdp "get default props" i
-getDefaultProps() {
-	return {
-		${1}
-	};
-},$0
+static defaultProps = {
+  ${1}: ${2}
+}$0
 endsnippet
 
 snippet gis "get initial state" b
-getInitialState() {
-	return {
-		${1}
-	};
-},$0
+constructor(props) {
+  super(props)
+
+  this.state = {
+    ${1}: ${2}
+  }
+}
 endsnippet
 
 snippet cdm "component did mount" b
 componentDidMount() {
   ${1}
-},$0
+}$0
 endsnippet
 
 snippet cdup "component did update" b
 componentDidUpdate(prevProps, prevState) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwm "component will mount" b
 componentWillMount() {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwr "component will receive props" b
 componentWillReceiveProps(nextProps) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwun "component will unmount" b
 componentWillUnmount() {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwu "component will update" b
 componentWillUpdate(nextProps, nextState) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet scu "should component update"
 shouldComponentUpdate(nextProps, nextState) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwa "component will appear" b
 componentWillAppear(done) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwe "component will enter" b
 componentWillEnter(done) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet cwl "component will leave" b
 componentWillLeave(done) {
 	${1}
-},$0
+}$0
 endsnippet
 
 snippet sst "set state" b
 this.setState({
 	${1}: ${2}
-});$0
+})$0
 endsnippet
 
 snippet props "get property" i
@@ -147,7 +148,7 @@ this.refs.${1}
 endsnippet
 
 snippet trp
-this.transferPropsTo(${1});
+this.transferPropsTo(${1})
 endsnippet
 
 snippet fdn "find DOM node" i

@@ -3,11 +3,11 @@
 ###########
 
 snippet c "console.log"
-console.log(${VISUAL}$0);
+console.log($0)
 endsnippet
 
 snippet cons "console.log"
-console.log(${VISUAL}$0);
+console.log($0)
 endsnippet
 
 snippet ct "console.logTitle"
@@ -15,7 +15,7 @@ console.log('\n---- ${VISUAL}$0 ----');
 endsnippet
 
 snippet cv "console.logVar"
-console.log('$1:', $0);
+console.log('$1:', $0)
 endsnippet
 
 snippet self "self = this" b
@@ -81,7 +81,7 @@ endsnippet
 
 snippet if "if" b
 if (${1}) {
-  ${VISUAL}$0
+  $0
 }
 endsnippet
 
@@ -194,14 +194,14 @@ endsnippet
 
 snippet sett "setTimeout function"
 setTimeout(function() {
-  ${VISUAL}$0
-}, ${1:10});
+  $0
+}, 10);
 endsnippet
 
 snippet setb "setTimeout function"
 setTimeout(_.bind(function() {
-  ${VISUAL}$0
-}, this), ${1:10});
+  $0
+}, this), 10);
 endsnippet
 
 snippet /(?<!^)bind/ "bind(this)" r
