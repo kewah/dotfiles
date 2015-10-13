@@ -23,7 +23,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'ervandew/supertab'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'SirVer/ultisnips'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
@@ -54,14 +53,14 @@ if !has("gui_running")
 endif
 
 " Syntaxes
-Plug 'pangloss/vim-javascript', {'for': ['javascript', 'javascript.jsx']}
-Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'javascript.jsx']}
-Plug 'mxw/vim-jsx', {'for': ['jsx', 'javascript.jsx']}
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'othree/html5.vim'
 Plug 'LeonB/HTML-AutoCloseTag'
-Plug 'JulesWang/css.vim'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-git'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs']}
@@ -197,12 +196,6 @@ autocmd  User GoyoLeave nested call :goyo_leave()
 " ----- elzr/vim-json settings -----
 let g:vim_json_syntax_conceal = 0
 
-" ----- marijnh/tern_for_vim settings -----
-nnoremap <leader>td :TernDef<CR>
-nnoremap <leader>tr :TernRefs<CR>
-nnoremap <leader>tR :TernRename<CR>
-let g:tern_map_keys = 1
-
 " ----- justinmk/vim-sneak settings -----
 let g:sneak#s_next = 1
 
@@ -260,3 +253,4 @@ nnoremap <silent> <leader>b :TagbarToggle<CR>
 " ----- tpope/vim-commentary settings -----
 autocmd FileType apache set commentstring=#\ %s
 autocmd FileType php set commentstring=\/\/\ %s
+autocmd FileType less set commentstring=\/\*\ %s\ \*\/
