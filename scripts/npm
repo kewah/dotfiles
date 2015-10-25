@@ -5,14 +5,24 @@ npm_run() {
   echo "Installing packages..."
 
   local packages="\
+    cssfmt \
     esformatter \
+    esformatter-braces \
+    esformatter-collapse-objects \
+    esformatter-dot-notation \
+    esformatter-literal-notation \
+    esformatter-parseint \
+    esformatter-quote-props \
+    esformatter-quotes \
+    esformatter-remove-trailing-commas \
+    esformatter-semicolons \
+    esformatter-spaced-lined-comment \
+    esformatter-var-each \
     eslint \
-    grunt-cli \
     gulp \
     httpster \
     mversion \
     nodemon \
-    n \
     npm \
     npm-check-updates \
     npm-module-generator \

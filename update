@@ -40,7 +40,7 @@ if [[ $all ]]; then
   update_brew
   update_vim
   update_npm
-  update_pip
+  # update_pip
   update_gem
 fi
 
@@ -59,10 +59,10 @@ if [[ $npm ]]; then
   update_npm
 fi
 
-if [[ $pip  ]]; then
-  echo "Update Pip's packages..."
-  update_pip
-fi
+# if [[ $pip  ]]; then
+#   echo "Update Pip's packages..."
+#   update_pip
+# fi
 
 
 if [[ $gem ]]; then

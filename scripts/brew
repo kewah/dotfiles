@@ -16,7 +16,7 @@ brew_install() {
 cask_install() {
   if [ ! -d "$1" ] && [ ! -d "/Applications/$1/" ] && [ ! -d "/Applications/$1.app/" ] && [ ! -d "$HOME/Applications/$1.app/" ] && [ ! -d "$HOME/Applications/$1/" ]
   then
-    brew cask install $2 --appdir="/Applications"
+    brew cask install $2
   fi
 }
 
@@ -29,11 +29,10 @@ brew_run() {
 
   local -a PACKAGES_NAME=(
     "git"
-    "ghi"
     "git-extras"
     "zsh"
     "zsh-completions"
-    "node"
+    "nvm"
     "macvim --with-override-system-vim --with-python3 --with-python --HEAD"
     "ack"
     "the_silver_searcher"
@@ -58,32 +57,37 @@ brew_run() {
   brew_tap caskroom/versions
 
   local -a APPS_NAME=(
+    "Atom"
     "Google Chrome"
     "Google Chrome Canary"
-    "Google Drive"
     "GoogleAppEngineLauncher"
-    "Google Hangouts"
     "Firefox"
+    "Firefoxdeveloperedition"
     "Opera"
+    "Caffeine"
     "Cloudup"
+    "Discord"
     "Dropbox"
     "AppZapper"
-    "dash"
+    "Dash"
     "Fluid"
+    "Flux"
+    "Focus"
     "ImageOptim"
     "LimeChat"
     "Skype"
+    "Slack"
     "Slowy"
     "Spectacle"
     "Spotify"
+    "TorBrowser"
     "Tower"
     "Transmission"
     "Transmit"
     "Versions"
     "VirtualBox"
     "VLC"
-    "XtraFinder"
-    "keyremap4macbook"
+    "Karabiner"
 
     "qlcolorcode"
     "qlstephen"

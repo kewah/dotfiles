@@ -136,6 +136,9 @@ source $HOME/.zfunctions/zsh-syntax-highlighting
 # Tmuxinator
 source ~/.bin/tmuxinator.zsh
 
+# NVM
+source "$(brew --prefix nvm)/nvm.sh"
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
