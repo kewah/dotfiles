@@ -111,4 +111,4 @@ ln -fs "${DOTFILES_DIRECTORY}/zsh/themes/zsh-syntax-highlighting/zsh-syntax-high
 chsh -s /bin/zsh
 
 source ./settings/osx
-source ./settings/kr4mb-import
+source ./settings/karabiner-import
