@@ -8,6 +8,7 @@ vendors
 images
 fonts
 venv
+__pycache__
 
 *.pyc
 *.png

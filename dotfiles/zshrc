@@ -15,6 +15,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # load our own completion functions
 fpath=(
   "/usr/local/share/zsh-completions"
+  "/usr/local/share/zsh/site-functions"
   "$HOME/.zfunctions"
   $fpath
 )
@@ -74,6 +75,26 @@ function bigup() {
 function gi() {
   curl http://www.gitignore.io/api/$@
 }
+
+function cvenv() {
+  virtualenv -p $(which python3) --no-site-packages --no-wheel venv
+}
+
+function avenv() {
+  source venv/bin/activate
+}
+
+function rmpyc() {
+  find . -name '*.pyc' -delete
+}
+
+function babelmon() {
+  nodemon --exec babel-node --stage 0 -- $@
+}
+
+# function gpip(){
+#   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+# }
 
 # By Moox: https://github.com/MoOx/dotfiles/blob/master/components/node/functions/npmpublish
 # `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`

@@ -6,11 +6,11 @@
     "esformatter-semicolons",
     "esformatter-literal-notation",
     "esformatter-parseint",
-    "esformatter-jsx-ignore",
     "esformatter-spaced-lined-comment",
     "esformatter-var-each",
     "esformatter-collapse-objects",
-    "esformatter-remove-trailing-commas"
+    "esformatter-remove-trailing-commas",
+    "esformatter-quote-props"
   ],
 
   "quotes": {
@@ -19,21 +19,25 @@
 
   "collapseObjects": {
     "ObjectExpression": {
-      "maxLineLength": 70,
+      "maxLineLength": 79,
       "maxKeys": 1
     }
   },
 
   "indent" : {
-    "value": "  "
+    "value": "  ",
+    "AlignComments": false
   },
 
   "whiteSpace": {
     "before": {
-      "ObjectExpressionClosingBrace": 0
+      "ObjectExpressionClosingBrace": 0,
+      "ModuleSpecifierClosingBrace": 0,
+      "PropertyName": 1
     },
     "after": {
-      "ObjectExpressionOpeningBrace": 0
+      "ObjectExpressionOpeningBrace": 0,
+      "ModuleSpecifierOpeningBrace": 0
     }
   }
 }
