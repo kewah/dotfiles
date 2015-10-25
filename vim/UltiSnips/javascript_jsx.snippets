@@ -8,6 +8,10 @@ snippet pure "pure component" b
 import PureComponent from 'react-pure-render/component'
 endsnippet
 
+snippet rdom "import react dom" b
+import {${0}} from 'react-dom'
+endsnippet
+
 snippet rcc "createClass" b
 import React, {Component} from 'react'
 
@@ -23,9 +27,25 @@ export default class ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$'
 }
 endsnippet
 
+snippet rcp "createClass" b
+import React from 'react'
+import PureComponent from 'react-pure-render/component'
+
+export default class ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} extends PureComponent {
+  static displayName = '$1'
+
+  render() {
+    return (
+      <div className="$1">
+      </div>
+    )
+  }
+}
+endsnippet
+
 snippet pt "propTypes" b
 static propTypes = {
-	${1}: PropTypes.${2}
+	${1}: ${2}
 }
 endsnippet
 
@@ -60,12 +80,8 @@ static defaultProps = {
 endsnippet
 
 snippet gis "get initial state" b
-constructor(props) {
-  super(props)
-
-  this.state = {
-    ${1}: ${2}
-  }
+state = {
+  ${1}: ${2}
 }
 endsnippet
 
@@ -130,29 +146,23 @@ componentWillLeave(done) {
 endsnippet
 
 snippet sst "set state" b
-this.setState({
-	${1}: ${2}
-})$0
+this.setState({$0})
 endsnippet
 
 snippet props "get property" i
-this.props.${1}
+const {$0} = this.props
 endsnippet
 
 snippet state "get state" i
-this.state.${1}
+const {$0} = this.state
 endsnippet
 
 snippet refs "get refs" i
-this.refs.${1}
-endsnippet
-
-snippet trp
-this.transferPropsTo(${1})
+const {$0} = this.refs
 endsnippet
 
 snippet fdn "find DOM node" i
-React.findDOMNode(${1})
+findDOMNode(${1})
 endsnippet
 
 snippet gdn "get DOM node" i
