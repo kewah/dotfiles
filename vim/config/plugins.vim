@@ -225,7 +225,7 @@ let g:javascript_ignore_javaScriptdoc = 1
 
 " ----- mxw/vim-jsx settings -----
 " autocmd BufNewFile,BufRead *.jsx set ft=javascript
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
 let g:jsx_pragma_required = 0
 
 " ----- millermedeiros/vim-esformatter settings -----
