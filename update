@@ -1,13 +1,7 @@
 #!/bin/bash
 
 update_brew() {
-  brew update && brew upgrade --all
-}
-
-update_vim() {
-  cd "${HOME}/.dotfiles"
-  git submodule foreach git pull origin master
-  cd -
+  brew update && brew upgrade --all && brew upgrade brew-cask
 }
 
 update_npm() {
@@ -38,7 +32,6 @@ done
 if [[ $all ]]; then
   echo "Update all packages..."
   update_brew
-  update_vim
   update_npm
   # update_pip
   update_gem
@@ -47,11 +40,6 @@ fi
 if [[ $brew ]]; then
   echo "Update Homebrew's packages..."
   update_brew
-fi
-
-if [[ $vim ]]; then
-  echo "Update Vim's plugins..."
-  update_vim
 fi
 
 if [[ $npm ]]; then
