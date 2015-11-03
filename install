@@ -15,7 +15,7 @@ if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
 fi
 
 source ${DOTFILES_DIRECTORY}/scripts/brew
-source ${DOTFILES_DIRECTORY}/scripts/npm
+source ${DOTFILES_DIRECTORY}/scripts/node
 source ${DOTFILES_DIRECTORY}/scripts/gem
 
 type_exists() {
@@ -58,13 +58,7 @@ fi
 sudo chown -R $USER /usr/local
 
 brew_run
-
-echo "Installing node & npm"
-source $(brew --prefix nvm)/nvm.sh
-nvm install 0.12.7
-nvm use 0.12.7
-nvm alias default 0.12.7
-
+node_run
 npm_run
 gem_run
 

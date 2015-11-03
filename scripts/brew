@@ -32,7 +32,6 @@ brew_run() {
     "git-extras"
     "zsh"
     "zsh-completions"
-    "nvm"
     "macvim --with-override-system-vim --with-python3 --with-python --HEAD"
     "ack"
     "the_silver_searcher"

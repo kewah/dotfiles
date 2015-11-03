@@ -1,0 +1,45 @@
+#!/bin/bash
+
+node_run() {
+  echo "Installing node & npm"
+
+  git clone https://github.com/creationix/nvm.git ~/.nvm
+  cd ~/.nvm
+  git checkout `git describe --abbrev=0 --tags`
+  cd --
+  source ~/.nvm/nvm.sh
+  nvm install stable
+  nvm use stable
+  nvm alias default stable
+}
+
+npm_install() {
+  npm install $1 -g --quiet
+}
+
+npm_run() {
+  echo "Installing node modules"
+  npm_install cssfmt
+  npm_install esformatter
+  npm_install esformatter-braces
+  npm_install esformatter-collapse-objects
+  npm_install esformatter-dot-notation
+  npm_install esformatter-literal-notation
+  npm_install esformatter-parseint
+  npm_install esformatter-quote-props
+  npm_install esformatter-quotes
+  npm_install esformatter-remove-trailing-commas
+  npm_install esformatter-semicolons
+  npm_install esformatter-spaced-lined-comment
+  npm_install esformatter-var-each
+  npm_install eslint
+  npm_install httpster
+  npm_install mversion
+  npm_install nodemon
+  npm_install npm
+  npm_install npm-check-updates
+  npm_install npm-module-generator
+  npm_install pure-prompt
+  npm_install updatehammer
+  npm_install yo
+}
