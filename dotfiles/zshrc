@@ -92,10 +92,6 @@ function babelmon() {
   nodemon --exec babel-node --stage 0 -- $@
 }
 
-# function gpip(){
-#   PIP_REQUIRE_VIRTUALENV="" pip "$@"
-# }
-
 # By Moox: https://github.com/MoOx/dotfiles/blob/master/components/node/functions/npmpublish
 # `npmpublish` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`
@@ -132,9 +128,6 @@ source $HOME/.zfunctions/zsh-syntax-highlighting
 
 # z(1)
 . /usr/local/etc/profile.d/z.sh
-
-# Tmuxinator
-source ~/.bin/tmuxinator.zsh
 
 # NVM
 source ~/.nvm/nvm.sh

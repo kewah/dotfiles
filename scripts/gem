@@ -15,7 +15,6 @@ gem_run() {
   local -a PACKAGES_NAME=(
     "git-up"
     "jekyll"
-    "tmuxinator"
   )
 
   for index in ${!PACKAGES_NAME[*]}; do
