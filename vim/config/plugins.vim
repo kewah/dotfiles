@@ -42,7 +42,6 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/vitality.vim'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'wakatime/vim-wakatime'
 Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual']}
 Plug 'kewah/vim-cssfmt', {'on': ['Cssfmt', 'CssfmtVisual']}
 Plug 'majutsushi/tagbar'
