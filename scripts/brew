@@ -36,7 +36,7 @@ brew_run() {
     "ack"
     "the_silver_searcher"
     "ctags"
-    "tmux"
+    "tmux --HEAD"
     "tree"
     "pngquant"
     "trash"
