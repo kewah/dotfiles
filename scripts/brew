@@ -44,6 +44,7 @@ brew_run() {
     "trash"
     "fontforge"
     "z"
+    "reattach-to-user-namespace"
   )
 
   for index in ${!PACKAGES_NAME[*]}; do
