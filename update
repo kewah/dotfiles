@@ -2,6 +2,9 @@
 
 update_brew() {
   brew update && brew upgrade --all && brew upgrade brew-cask
+
+  # Update neovim
+  brew reinstall neovim --HEAD
 }
 
 update_npm() {

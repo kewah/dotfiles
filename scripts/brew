@@ -23,6 +23,7 @@ cask_install() {
 brew_run() {
   brew update
   brew upgrade --all
+  brew_tap neovim/neovim
 
   echo "Homebrew:"
   echo "Installing packages..."
@@ -33,6 +34,7 @@ brew_run() {
     "zsh"
     "zsh-completions"
     "macvim --with-override-system-vim --with-python3 --with-python --HEAD"
+    "neovim --HEAD"
     "ack"
     "the_silver_searcher"
     "ctags"
