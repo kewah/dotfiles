@@ -61,7 +61,7 @@ set formatoptions-=or
 
 " set list " Show 'invisible' characters
 set listchars=tab:▸\ ,trail:·,nbsp:_ " Set characters used to indicate 'invisible' characters
-set showbreak=⌞
+set showbreak=↪
 set wrap
 set linebreak
 set nolist
