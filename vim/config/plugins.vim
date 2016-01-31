@@ -62,7 +62,7 @@ Plug 'LeonB/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-git'
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs']}
+Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs', 'html.handlebars']}
 Plug 'lepture/vim-jinja'
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
@@ -99,7 +99,7 @@ nnoremap <leader>wt :call WMReStack()<CR>
 
 " ------ scrooloose/nerdtree settings -----
 " Show the current buffer in NERDTree
-noremap <leader>o :NERDTreeFind<cr>
+noremap <leader>k :NERDTreeFind<cr>
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
 " The CWD is changed whenever the tree root is changed
