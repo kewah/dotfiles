@@ -5,3 +5,4 @@ vim/undo
 vim/plugged
 vim/autoload/plug.vim
 vim/tags
+vim/autoload/plug.vim.old
