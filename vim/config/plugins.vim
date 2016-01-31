@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " ----- Plugins -----
 Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
@@ -24,7 +24,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-eunuch'
@@ -70,7 +71,6 @@ Plug 'mutewinter/nginx.vim', {'for': 'nginx'}
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
-Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 Plug 'lambdatoast/elm.vim', {'for': 'elm'}
 
 call plug#end()
