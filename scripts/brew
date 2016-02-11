@@ -45,6 +45,7 @@ brew_run() {
     "fontforge"
     "z"
     "reattach-to-user-namespace"
+    "elm"
   )
 
   for index in ${!PACKAGES_NAME[*]}; do
@@ -57,6 +58,9 @@ brew_run() {
   brew_tap phinze/cask
   brew_install brew-cask
   brew_tap caskroom/versions
+
+  brew_tap homebrew/devel-only
+  brew_install --devel elm-format
 
   local -a APPS_NAME=(
     "Atom"
