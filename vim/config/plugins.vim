@@ -71,7 +71,7 @@ Plug 'mutewinter/nginx.vim', {'for': 'nginx'}
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
-Plug 'lambdatoast/elm.vim', {'for': 'elm'}
+Plug 'elmcast/elm-vim', {'for': 'elm'}
 
 call plug#end()
 
@@ -253,3 +253,8 @@ nnoremap <silent> <leader>b :TagbarToggle<CR>
 autocmd FileType apache set commentstring=#\ %s
 autocmd FileType php set commentstring=\/\/\ %s
 autocmd FileType less set commentstring=\/\*\ %s\ \*\/
+
+" ----- elmcast/elm-vim settings -----
+nnoremap <silent> <leader>ef :ElmFormat<CR>
+nnoremap <silent> <leader>et :ElmTest<CR>
+let g:elm_format_autosave = 1
