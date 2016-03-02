@@ -47,6 +47,7 @@ Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual
 Plug 'kewah/vim-cssfmt', {'on': ['Cssfmt', 'CssfmtVisual']}
 Plug 'majutsushi/tagbar'
 Plug 'godlygeek/tabular', {'on': 'Tabularize'}
+Plug 'kana/vim-smartword'
 
 if !has("gui_running")
   Plug 'djoshea/vim-autoread'
@@ -258,3 +259,9 @@ autocmd FileType less set commentstring=\/\*\ %s\ \*\/
 nnoremap <silent> <leader>ef :ElmFormat<CR>
 nnoremap <silent> <leader>et :ElmTest<CR>
 let g:elm_format_autosave = 1
+
+" ----- kana/vim-smartword settings -----
+map <space>w <Plug>(smartword-w)
+map <space>b <Plug>(smartword-b)
+map <space>e <Plug>(smartword-e)
+map <space>ge <Plug>(smartword-ge)
