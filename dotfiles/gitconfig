@@ -12,7 +12,7 @@
   ai = add -i
   c = commit --verbose
   p = push
-  d = diff
+  d = !git diff --color $@ | diff-so-fancy
   cm = commit -am
   ac = !git add -A && git commit -a --verbose
   acm = !git add -A && git commit -am
@@ -23,15 +23,16 @@
   brd = branch -d
   me = merge --no-ff
   amend = commit -a --amend
+  fup = fetch upstream
   reb = rebase -p
+  rup = rebase -p upstream/master
   pu = pull --rebase
   ls = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-  alias = config --get-regexp alias
+  aliases = config --get-regexp alias
+  trash = clean -xfd
   diffup = diff @{u}
   nc = shortlog -s -n --all
-  today = log --since=midnight --author=\"$(git config user.name)\" --oneline
-  yesterday = !git log --graph --all --since=\"yesterday.midnight\" --until=\"midnight\" --author=\"$(git config user.name)\" --oneline
 
 [credential]
   helper = osxkeychain
@@ -64,12 +65,17 @@
 
 [push]
   default = current
-	followTags = true
+  followTags = true
 
 [pager]
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
 
 [rerere]
-	autoupdate = true
+  autoupdate = true
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
