@@ -23,3 +23,16 @@ afterEach(function() {
 $0
 });
 endsnippet
+
+snippet fail "expect().to.be.ok" b
+expect(false).to.be.ok();$0
+endsnippet
+
+snippet equal "expect().to.equal" b
+expect($1).to.equal($0);
+endsnippet
+
+snippet nequal "expect().to.not.equal" b
+expect($1).to.not.equal($0);
+endsnippet
+

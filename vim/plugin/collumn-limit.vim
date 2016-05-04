@@ -3,7 +3,7 @@ augroup collumnLimit
   autocmd!
   autocmd BufEnter,WinEnter,Filetype javascript,markdown,php
     \ highlight CollumnLimit guibg=NONE guifg=VioletRed gui=bold
-  let collumnLimit = 80
+  let collumnLimit = 120
   let pattern = '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
   autocmd BufEnter,WinEnter,Filetype javascript,markdown,php
     \ let w:m1=matchadd('CollumnLimit', pattern, -1)

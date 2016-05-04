@@ -42,12 +42,12 @@ Plug 'justinmk/vim-sneak'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/vitality.vim'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual']}
-Plug 'kewah/vim-cssfmt', {'on': ['Cssfmt', 'CssfmtVisual']}
+Plug 'kewah/vim-stylefmt', {'on': ['Stylefmt', 'StylefmtVisual']}
 Plug 'majutsushi/tagbar'
 Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 Plug 'kana/vim-smartword'
+Plug 'airblade/vim-gitgutter', {'on': 'GitGutterToggle'}
 
 if !has("gui_running")
   Plug 'djoshea/vim-autoread'
@@ -134,6 +134,7 @@ let g:ctrlp_user_command = 'ag %s -l -U --nocolor --hidden -g ""'
 " ----- bling/vim-airline settings -----
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
+let g:airline#extensions#hunks#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
 
@@ -232,9 +233,9 @@ let g:jsx_pragma_required = 0
 nnoremap <silent> <leader>es :Esformatter<CR>
 vnoremap <silent> <leader>es :EsformatterVisual<CR>
 
-" ----- kewah/vim-cssfmt settings -----
-nnoremap <silent> <leader>cs :Cssfmt<CR>
-vnoremap <silent> <leader>cs :CssfmtVisual<CR>
+" ----- kewah/vim-stylefmt settings -----
+nnoremap <silent> <leader>cs :Stylefmt<CR>
+vnoremap <silent> <leader>cs :StylefmtVisual<CR>
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
@@ -265,3 +266,14 @@ map <space>w <Plug>(smartword-w)
 map <space>b <Plug>(smartword-b)
 map <space>e <Plug>(smartword-e)
 map <space>ge <Plug>(smartword-ge)
+
+" ----- airblade/vim-gitgutter -----
+let g:gitgutter_enabled = 0
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+nnoremap <silent> <leader>g :GitGutterToggle<CR>
+nnoremap ]h <Plug>GitGutterNextHunk
+nnoremap [h <Plug>GitGutterPrevHunk
+nnoremap <Leader>ha <Plug>GitGutterStageHunk
+nnoremap <Leader>hu <Plug>GitGutterRevertHunk
