@@ -46,6 +46,7 @@ brew_run() {
     "z"
     "reattach-to-user-namespace"
     "elm"
+    "diff-so-fancy"
   )
 
   for index in ${!PACKAGES_NAME[*]}; do

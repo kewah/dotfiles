@@ -19,7 +19,6 @@ npm_install() {
 
 npm_run() {
   echo "Installing node modules"
-  npm_install cssfmt
   npm_install esformatter
   npm_install esformatter-braces
   npm_install esformatter-collapse-objects
@@ -41,5 +40,6 @@ npm_run() {
   npm_install npm-module-generator
   npm_install pure-prompt
   npm_install updatehammer
+  npm_install stylefmt
   npm_install yo
 }
