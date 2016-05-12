@@ -126,6 +126,9 @@ noremap <leader>os :sp %%
 noremap <leader>ov :vsp %%
 noremap <leader>ot :tabe %%
 
+" open the file under the cursor in a vertical panel
+nnoremap <leader>of <C-w>f<C-w>L
+
 if &term =~ "xterm" || &term =~ "screen" || &term =~ "builtin_gui"
   " Ctrl-Enter
   set  <F13>=[25~
