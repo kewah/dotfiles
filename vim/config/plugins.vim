@@ -13,7 +13,7 @@ Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/emmet-vim'
+Plug 'kewah/emmet-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'junegunn/goyo.vim', {'for': 'markdown'}
