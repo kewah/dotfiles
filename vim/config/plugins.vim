@@ -20,6 +20,7 @@ Plug 'junegunn/goyo.vim', {'for': 'markdown'}
 Plug 'junegunn/limelight.vim', {'for': 'markdown'}
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
+Plug 'mtscout6/syntastic-local-eslint.vim', {'commit': '7ef962d110a742e587209a7e6b013a4cd91e01eb', 'for': 'javascript'}
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'ervandew/supertab'
