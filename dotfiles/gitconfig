@@ -23,6 +23,7 @@
   brd = branch -d
   me = merge --no-ff
   amend = commit -a --amend
+  up = !git fetch && git rebase --autostash
   fup = fetch upstream
   reb = rebase -p
   rup = rebase -p upstream/master
