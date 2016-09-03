@@ -133,7 +133,7 @@ nnoremap <leader>r :Ag!<space>
 nnoremap <leader>R :Ag! "<C-R><C-W>"<CR>
 
 " ----- kien/ctrlp.vim settings ------
-nnoremap <C-b> :CtrlPBuffer<CR>
+nnoremap <C-x> :CtrlPBuffer<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 'ra' " current working dir
 let g:ctrlp_switch_buffer = 0 " always open files in new buffers
