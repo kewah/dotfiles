@@ -13,7 +13,7 @@ Plug 'rking/ag.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'kewah/emmet-vim'
+Plug 'mattn/emmet-vim'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'junegunn/goyo.vim', {'for': 'markdown'}
@@ -49,14 +49,22 @@ Plug 'majutsushi/tagbar'
 Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 Plug 'kana/vim-smartword'
 Plug 'airblade/vim-gitgutter', {'on': 'GitGutterToggle'}
+Plug 'wakatime/vim-wakatime'
+Plug 'mvolkmann/vim-js-arrow-function', {'for': 'javascript'}
+Plug 'terryma/vim-smooth-scroll'
 
 if !has("gui_running")
   Plug 'djoshea/vim-autoread'
 endif
 
+if has('nvim')
+  Plug 'neomake/neomake'
+endif
+
 " Syntaxes
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -74,6 +82,7 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 Plug 'elmcast/elm-vim', {'for': 'elm'}
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 
 call plug#end()
 
@@ -162,11 +171,18 @@ endif
 " ----- mattn/emmet-vim settings -----
 imap <C-e> <C-y>,
 let g:use_emmet_complete_tag = 1
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx'
+\  },
+\}
 
 " Syntastic
 nnoremap <silent> <down> :lnext<CR>
 nnoremap <silent> <up> :lprev<CR>
 
+let g:syntastic_check_on_wq = 1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_javascript_checkers = ['eslint']
@@ -260,7 +276,7 @@ autocmd FileType less set commentstring=\/\*\ %s\ \*\/
 " ----- elmcast/elm-vim settings -----
 nnoremap <silent> <leader>ef :ElmFormat<CR>
 nnoremap <silent> <leader>et :ElmTest<CR>
-let g:elm_format_autosave = 1
+let g:elm_format_autosave = 0
 
 " ----- kana/vim-smartword settings -----
 map <space>w <Plug>(smartword-w)
@@ -278,3 +294,25 @@ nnoremap ]h <Plug>GitGutterNextHunk
 nnoremap [h <Plug>GitGutterPrevHunk
 nnoremap <Leader>ha <Plug>GitGutterStageHunk
 nnoremap <Leader>hu <Plug>GitGutterRevertHunk
+
+" ----- terryma/vim-smooth-scroll -----
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+" ----- neomake/neomake -----
+if has('neovim')
+  " Run NeoMake on read and write operations
+  autocmd! BufReadPost,BufWritePost * Neomake
+  let g:neomake_coffeescript_enabled_makers = ['eslint']
+
+  " Disable inherited syntastic
+  " let g:syntastic_mode_map = {
+  "   \ "mode": "passive",
+  "   \ "active_filetypes": [],
+  "   \ "passive_filetypes": [] }
+
+  " let g:neomake_serialize = 1
+  " let g:neomake_serialize_abort_on_error = 1
+endif
