@@ -13,7 +13,6 @@ gem_run() {
   sudo gem update --system && sudo gem update
 
   local -a PACKAGES_NAME=(
-    "git-up"
     "jekyll"
   )
 
