@@ -53,10 +53,6 @@ Plug 'wakatime/vim-wakatime'
 Plug 'mvolkmann/vim-js-arrow-function', {'for': 'javascript'}
 Plug 'terryma/vim-smooth-scroll'
 
-if !has("gui_running")
-  Plug 'djoshea/vim-autoread'
-endif
-
 if has('nvim')
   Plug 'neomake/neomake'
 endif
@@ -178,13 +174,10 @@ let g:user_emmet_settings = {
 \}
 
 " Syntastic
-nnoremap <silent> <down> :lnext<CR>
-nnoremap <silent> <up> :lprev<CR>
-
 let g:syntastic_check_on_wq = 1
-let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = {'passive_filetypes': ['html']}
 
@@ -302,17 +295,15 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " ----- neomake/neomake -----
-if has('neovim')
+if has('nvim')
   " Run NeoMake on read and write operations
   autocmd! BufReadPost,BufWritePost * Neomake
-  let g:neomake_coffeescript_enabled_makers = ['eslint']
 
   " Disable inherited syntastic
-  " let g:syntastic_mode_map = {
-  "   \ "mode": "passive",
-  "   \ "active_filetypes": [],
-  "   \ "passive_filetypes": [] }
+  let g:syntastic_mode_map = {'passive_filetypes': ['html', 'javascript', 'json']}
 
-  " let g:neomake_serialize = 1
-  " let g:neomake_serialize_abort_on_error = 1
+  let g:neomake_serialize = 1
+  let g:neomake_serialize_abort_on_error = 1
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_json_enabled_makers = ['jsonlint']
 endif
