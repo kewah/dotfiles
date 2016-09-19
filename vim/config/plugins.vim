@@ -43,34 +43,34 @@ Plug 'justinmk/vim-sneak'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sjl/vitality.vim'
 Plug 'sjl/gundo.vim', {'on': 'GundoToggle'}
-Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual']}
 Plug 'kewah/vim-stylefmt', {'on': ['Stylefmt', 'StylefmtVisual']}
 Plug 'majutsushi/tagbar'
 Plug 'godlygeek/tabular', {'on': 'Tabularize'}
 Plug 'kana/vim-smartword'
 Plug 'airblade/vim-gitgutter', {'on': 'GitGutterToggle'}
 Plug 'wakatime/vim-wakatime'
-Plug 'mvolkmann/vim-js-arrow-function', {'for': 'javascript'}
 Plug 'terryma/vim-smooth-scroll'
 
 if has('nvim')
   Plug 'neomake/neomake'
 endif
 
+" JavaScript
+Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual']}
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mvolkmann/vim-js-arrow-function', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
+
 " Syntaxes
-Plug 'pangloss/vim-javascript'
-" Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/yajs.vim'
-Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'othree/html5.vim'
 Plug 'LeonB/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-git'
+Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs', 'html.handlebars']}
-Plug 'lepture/vim-jinja'
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
 Plug 'mutewinter/nginx.vim', {'for': 'nginx'}
