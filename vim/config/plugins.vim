@@ -20,7 +20,6 @@ Plug 'junegunn/goyo.vim', {'for': 'markdown'}
 Plug 'junegunn/limelight.vim', {'for': 'markdown'}
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
-Plug 'mtscout6/syntastic-local-eslint.vim', {'commit': '7ef962d110a742e587209a7e6b013a4cd91e01eb', 'for': 'javascript'}
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'ervandew/supertab'
@@ -50,6 +49,7 @@ Plug 'kana/vim-smartword'
 Plug 'airblade/vim-gitgutter', {'on': 'GitGutterToggle'}
 Plug 'wakatime/vim-wakatime'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'jaawerth/nrun.vim'
 
 if has('nvim')
   Plug 'neomake/neomake'
@@ -178,6 +178,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_enable_signs = 1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_javascript_eslint_exec = nrun#Which('eslint')
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_mode_map = {'passive_filetypes': ['html']}
 
@@ -304,6 +305,12 @@ if has('nvim')
 
   let g:neomake_serialize = 1
   let g:neomake_serialize_abort_on_error = 1
+  let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
   let g:neomake_javascript_enabled_makers = ['eslint']
   let g:neomake_json_enabled_makers = ['jsonlint']
+endif
+
+" ----- Shougo/deoplete.nvim -----
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
 endif
