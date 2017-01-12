@@ -53,12 +53,14 @@ Plug 'jaawerth/nrun.vim'
 
 if has('nvim')
   Plug 'neomake/neomake'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
 endif
 
 " JavaScript
-Plug 'millermedeiros/vim-esformatter', {'on': ['Esformatter', 'EsformatterVisual']}
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'gavocanov/vim-js-indent', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'mvolkmann/vim-js-arrow-function', { 'for': ['javascript', 'javascript.jsx'] }
 " Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -69,7 +71,6 @@ Plug 'LeonB/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-git'
 Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs', 'html.handlebars']}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
 Plug 'digitaltoad/vim-jade', {'for': 'jade'}
@@ -100,6 +101,9 @@ nnoremap <leader>wm :call WMMarkWindowSwap()<CR>
 nnoremap <leader>wx :call WMDoWindowSwap()<CR>
 nnoremap <leader>wt :call WMReStack()<CR>
 
+" Code formatting
+autocmd BufNewFile,BufRead *.js set formatprg=prettier\ --stdin\ --single-quote\ --bracket-spacing
+nnoremap <silent> <leader>es gggqG<C-o><CR>
 
 " Remote plugins settings
 " -----------------------------------------------------------------------------
@@ -239,10 +243,6 @@ let g:javascript_ignore_javaScriptdoc = 1
 " autocmd BufNewFile,BufRead *.jsx set ft=javascript
 let g:jsx_ext_required = 0
 let g:jsx_pragma_required = 0
-
-" ----- millermedeiros/vim-esformatter settings -----
-nnoremap <silent> <leader>es :Esformatter<CR>
-vnoremap <silent> <leader>es :EsformatterVisual<CR>
 
 " ----- kewah/vim-stylefmt settings -----
 nnoremap <silent> <leader>cs :Stylefmt<CR>
