@@ -4,6 +4,8 @@ set background=dark
 colorscheme base16-default
 set encoding=utf-8
 
+set formatprg=par
+
 " Remove delay between modes
 set timeout
 set timeoutlen=1000 " Wait {num} ms before timing out a mapping
