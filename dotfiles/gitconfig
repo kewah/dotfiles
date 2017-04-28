@@ -34,6 +34,7 @@
   trash = clean -xfd
   diffup = diff @{u}
   nc = shortlog -s -n --all
+  copr = !sh -c 'git checkout -b pr/$0 upstream/pr/$0'
 
 [credential]
   helper = osxkeychain
