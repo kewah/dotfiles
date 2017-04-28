@@ -21,6 +21,7 @@ alias gp="git push"
 alias gpt="git push origin master && git push origin master --tags"
 alias gfup="git fetch upstream"
 alias grup="git rebase -p upstream/master"
+alias delete-merged-branch="git branch --merged | grep -v \* | xargs git branch -d"
 alias g-="git checkout -"
 
 alias ns="npm i -S"
