@@ -69,7 +69,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'othree/html5.vim'
 Plug 'LeonB/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'tpope/vim-git'
+Plug 'tpope/vim-git', { 'for': ['git', 'gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail'] }
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'mustache/vim-mustache-handlebars', {'for': ['mustache', 'hbs', 'html.handlebars']}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
@@ -102,8 +102,8 @@ nnoremap <leader>wx :call WMDoWindowSwap()<CR>
 nnoremap <leader>wt :call WMReStack()<CR>
 
 " Code formatting
-autocmd BufNewFile,BufRead *.js set formatprg=prettier\ --stdin\ --single-quote\ --bracket-spacing
-nnoremap <silent> <leader>es gggqG<C-o><CR>
+autocmd BufNewFile,BufRead *.js set formatprg=prettier\ --stdin\ --single-quote
+nnoremap <silent> <leader>es gggqG<C-o>
 
 " Remote plugins settings
 " -----------------------------------------------------------------------------
@@ -313,4 +313,7 @@ endif
 " ----- Shougo/deoplete.nvim -----
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = '0'
 endif
