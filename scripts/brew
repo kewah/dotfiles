@@ -22,7 +22,7 @@ cask_install() {
 
 brew_run() {
   brew update
-  brew upgrade --all
+  brew upgrade
   brew_tap neovim/neovim
 
   echo "Homebrew:"
