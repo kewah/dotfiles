@@ -55,15 +55,6 @@ function md {
   mkdir -p $1 && cd $1
 }
 
-function vim-add-plugin {
-  PLUGIN_NAME=$(echo "$1" | sed "s#.*/##")
-
-  cd $HOME/.dotfiles
-  git submodule add $1 "vim/bundle/$PLUGIN_NAME"
-  git submodule update --init --recursive
-  cd -
-}
-
 function npmls() {
   npm ls --depth=0 "$@" 2>/dev/null
 }
