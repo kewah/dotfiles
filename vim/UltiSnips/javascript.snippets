@@ -2,29 +2,12 @@
 #  UTILS  #
 ###########
 
-snippet c "console.log"
-console.log($0)
-endsnippet
-
 snippet cons "console.log"
 console.log($0)
 endsnippet
 
-snippet ct "console.logTitle"
-console.log('\n---- ${VISUAL}$0 ----');
-endsnippet
-
 snippet cv "console.logVar"
 console.log('$1:', $0)
-endsnippet
-
-snippet self "self = this" b
-var self = this;
-endsnippet
-
-snippet strict "use strict" b
-'use strict';
-${VISUAL}$0
 endsnippet
 
 snippet prom "Promise" b
@@ -33,51 +16,25 @@ return new Promise((resolve, reject) => {
 });
 endsnippet
 
-###########
-#  LOOPS  #
-###########
-
-snippet fori "for increment" b
-var ${1:len} = ${2:array}.length;
-var ${3:i}, ${4:item};
-
-for ($3 = 0; $3 < $1; $3++) {
-  $4 = $2[$3];
-  ${VISUAL}$0
-}
+snippet im "import"
+import ${1:name} from '${2:path}';
+${VISUAL}$0
 endsnippet
 
-snippet ford "for decrement" b
-var ${2:item};
-var ${1:i};
-
-for ($1 = ${3:array}.length - 1; $1 >= 0; $1--) {
-  $2 = $3[$1];
-  ${VISUAL}$0
-}
+snippet => "lambda" w
+(${1}) => {
+  ${2}
+};
 endsnippet
 
-snippet whiled "while decrement" b
-var ${1:i} = ${2:array}.length;
-var ${3:item};
-
-while ($1--) {
-  $3 = $2[$1];
-  ${VISUAL}$0
-}
-endsnippet
-
-snippet fin "for in" b
-for (var ${1:key} in ${2:source}) {
-  if ($2.hasOwnProperty($1)) {
-    ${0}
+snippet class "class"
+class ${1:name} {
+  constructor (${2}) {
+    ${3}
   }
+  $0
 }
 endsnippet
-
-################
-#  CONDITIONS  #
-################
 
 snippet if "if" b
 if (${1}) {
@@ -85,43 +42,23 @@ if (${1}) {
 }
 endsnippet
 
-snippet ifi "if inline" b
-if (${1}) return ${VISUAL}$0;
-endsnippet
-
-snippet /(?<!^)ift/ "if ternary" r
-${2:condition}
-  ? ${3:true}
-  : ${4:false};
-endsnippet
-
-snippet /^ift/ "if ternary with var" r
-var ${1:variable} = ${2:condition}
-  ? ${3:true}
-  : ${4:false};
-endsnippet
-
 #########
 #  DOM  #
 #########
 
-snippet get "Get Elements"
-getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
-endsnippet
-
-snippet /(?<!^)ael/ "addEventListener" r
+snippet /(?<!^)adde/ "addEventListener" r
 addEventListener('${1:type}', ${VISUAL}$0${2:, false});
 endsnippet
 
-snippet /^ael/ "addEventListener" r
+snippet /^adde/ "addEventListener" r
 ${1:document}.addEventListener('${2:type}', ${VISUAL}$0${3:, false});
 endsnippet
 
-snippet /(?<!^)rel/ "removeEventListener" r
+snippet /(?<!^)removee/ "removeEventListener" r
 removeEventListener('${1:type}', ${VISUAL}$0${2:, false});
 endsnippet
 
-snippet /^rel/ "removeEventListener" r
+snippet /^removee/ "removeEventListener" r
 ${1:document}.removeEventListener('${2:type}', ${VISUAL}$0${3:, false});
 endsnippet
 
@@ -143,94 +80,16 @@ e.stopPropagation();
 ${VISUAL}$0
 endsnippet
 
-snippet /(?<!^)fragment/ "document fragment" r
-document.createDocumentFragment();
-${VISUAL}$0
-endsnippet
-
-snippet /(?<!^)create/ "create element" r
-document.createElement($0);
-endsnippet
-
-snippet /gbcr/ "getBoundingClientRect()" r
-getBoundingClientRect()
-endsnippet
-
-###############
-#  FUNCTIONS  #
-###############
-
-snippet /(?<!^)fn/ " anoymous function" r
-function($1) {
-  ${VISUAL}$0
-}$2
-endsnippet
-
-snippet /^fn/ "function" r
-function ${1:name}(${2}) {
-  ${VISUAL}$0
-}
-endsnippet
-
-snippet of "Object function" b
-${1:name}: function($2) {
-  ${VISUAL}$0
-},
-endsnippet
-
-snippet fv "var function" b
-var ${1:name} = function($2) {
-  ${VISUAL}$0
-};
-endsnippet
-
-snippet /(?<!^)fb/ "bind function" r
-_.bind(function() {
-  ${VISUAL}$0
-}, this)
-endsnippet
-
-snippet iife "Immediately-Invoked Function Expression (iife)" b
-(function(${1:argument}) {
-  ${VISUAL}$0
-}(${2:$1}));
-endsnippet
-
 snippet sett "setTimeout function"
-setTimeout(function() {
+setTimeout(() => {
   $0
 }, 10);
-endsnippet
-
-snippet setb "setTimeout function"
-setTimeout(_.bind(function() {
-  $0
-}, this), 10);
-endsnippet
-
-snippet /(?<!^)bind/ "bind(this)" r
-this.${1:handler}.bind(this);
-endsnippet
-
-snippet /^bind/ "bind(this)" r
-this.${1:handler} = this.$1.bind(this);
-endsnippet
-
-snippet autonew "Return an instance" b
-if (!(this instanceof ${1:ClassName})) return new $1($2);
-
 endsnippet
 
 snippet prot "protype" b
 ${1:class}.prototype.${2:method} = function(${3:arguments}) {
   ${VISUAL}$0
 };
-endsnippet
-
-snippet then "then" b
-${1:promise}.then(function(${2:value}) {
-  ${VISUAL}$0
-});
 endsnippet
 
 ############

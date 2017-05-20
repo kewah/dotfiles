@@ -1,66 +1,10 @@
 priority -50
 
-snippet me "module.exports" b
-module.exports = $1;
-endsnippet
-
-snippet ex "exports = module.exports" b
-exports.${1:name} = $2;
-endsnippet
-
-snippet em "exports = module.exports" b
-exports = module.exports = $1;
-endsnippet
-
-snippet re "require" b
-var `!p
-def formatVariableName(path):
-	lastPart = path.split('/')[-1]
-	if lastPart == 'underscore' or lastPart == 'lodash':
-		return '_'
-	elif lastPart == 'jquery':
-		return '$'
-	else:
-		return string.replace(lastPart.title(), '_', '');
-snip.rv = formatVariableName(t[1])
-` = require('${1}');$0
-endsnippet
-
-snippet env "env" b
+snippet nodeenv "env" b
 #!/usr/bin/env node
 ${VISUAL}$0
 endsnippet
 
-snippet /(?<!^)nodeenv/ "node_env" r
+snippet /(?<!^)env/ "node_env" r
 process.env.NODE_ENV
-endsnippet
-
-snippet cb "callback" b
-function(err${1:, value}) {
-  ${0}
-}
-endsnippet
-
-snippet /^on/ "on" r
-${1:emitter}.on('${2:event}', function(${3:arguments}) {
-  ${0}
-});
-endsnippet
-
-snippet /(?<!^)once/ "once" r
-once('${2:event}', function(${3:arguments}) {
-  ${0}
-});
-endsnippet
-
-snippet /^once/ "once" r
-${1:emitter}.once('${2:event}', function(${3:arguments}) {
-  ${0}
-});
-endsnippet
-
-snippet nt "nextTick" b
-${1:process}.nextTick(function() {
-  ${0}
-});
 endsnippet
